@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Órbitas Relativísticas</title>
+    <link rel="icon" type="image/x-icon" href="img/meteorite.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+    <script src="js/script.js"></script>
+    <!--MathJax-->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <!--Pyscript-->
+    <!--<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-config>
+        packages = ["matplotlib", "numpy", "sympy", "scipy"]
+        terminal = false
+    </py-config>-->
+</head>
+
+<body>
+    <div id="inicio" style="display: block">
+        <button class="botao" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
+        <h1>ÓRBITAS<br>RELATIVÍSTICAS</h1>
+        <div class="menu">
+            <a class="card" id="left" onclick="show('corpos-massivos','inicio')">
+                <h2>Órbitas de<br><strong>corpos <br>massivos</strong></h2>
+                <img class="icons" src="img/planet.svg">
+            </a>
+            <a class="card" id="right" onclick="show('raios-de-luz','inicio')">
+                <h2>Órbitas de<br><strong>raios<br>de luz</strong></h2>
+                <img class="icons" src="img/sun.svg">
+            </a>
+        </div>
+    </div>
+
+    <div id="corpos-massivos" style="display: none">
+        <button class="botao" title="Voltar" id="voltar" onclick="show('inicio','corpos-massivos')"><img class="back" src="img/back.svg"></button>
+        <button class="botao" title="Abrir informações" id="info"><img class="question" src="img/question.svg"></button>
+        <button class="botao" title="Ativar modo escuro" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
+        
+        <h3>ÓRBITAS RELATIVÍSTICAS DE CORPOS MASSIVOS</h3>
+
+        <div class="modal"></div>
+        <div class="window">
+            <div class="titlebar">
+                <a class="nav"><img src="img/text.svg" style="height: 30px;"><p>Contextualização</p></a>
+                <a class="nav"><img src="img/question.svg" style="height: 30px;"><p>Funcionamento do programa</p></a>
+                <button><img src="img/close.svg"></button>
+            </div>
+            <div class="conteudo">
+                <p>AAA</p>
+            </div>
+        </div>
+
+        <article>
+            <p>oi</p>
+        </article>
+    </div>
+
+    <div id="raios-de-luz" style="display: none">
+        <button class="botao" title="Voltar" id="voltar" onclick="show('inicio','raios-de-luz')"><img class="back" src="img/back.svg"></button>
+        <button class="botao" title="Abrir informações" id="info"><img class="question" src="img/question.svg"></button>
+        <button class="botao" title="Ativar modo escuro" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
+        
+        <h3>ÓRBITAS RELATIVÍSTICAS DE RAIOS DE LUZ</h3>
+        <article>
+            <p>oi</p>
+        </article>
+    </div>
+
+    <footer>
+        <a class="foot"><img class="about" src="img/info.svg"><p class="foot">Sobre este site</p></a>
+    </footer>
+</body>
+
+</html>
