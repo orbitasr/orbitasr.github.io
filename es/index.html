@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Órbitas Relativísticas</title>
-    <link rel="icon" type="image/x-icon" href="img/meteorite.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
     <script src="js/script.js"></script>
     <!--MathJax-->
@@ -17,15 +17,16 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     <!--Pyscript-->
-    <!--<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <py-config>
         packages = ["matplotlib", "numpy", "sympy", "scipy"]
         terminal = false
-    </py-config>-->
+    </py-config>
 </head>
 
-<body>
+<body onload="init()">
+
     <div id="inicio" style="display: block">
         <button class="botao" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
         <h1>ÓRBITAS<br>RELATIVÍSTICAS</h1>
@@ -42,26 +43,93 @@
     </div>
 
     <div id="corpos-massivos" style="display: none">
+
         <button class="botao" title="Voltar" id="voltar" onclick="show('inicio','corpos-massivos')"><img class="back" src="img/back.svg"></button>
-        <button class="botao" title="Abrir informações" id="info"><img class="question" src="img/question.svg"></button>
+        <button class="botao" title="Abrir informações" id="info" onclick="openModal('modal','window')"><img class="question" src="img/question.svg"></button>
         <button class="botao" title="Ativar modo escuro" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
         
         <h3>ÓRBITAS RELATIVÍSTICAS DE CORPOS MASSIVOS</h3>
 
-        <div class="modal"></div>
-        <div class="window">
+        <div class="modal" id="modal" onclick="ride('modal','window')"></div>
+        <div class="window" id="window">
             <div class="titlebar">
-                <a class="nav"><img src="img/text.svg" style="height: 30px;"><p>Contextualização</p></a>
-                <a class="nav"><img src="img/question.svg" style="height: 30px;"><p>Funcionamento do programa</p></a>
-                <button><img src="img/close.svg"></button>
+                <div class="selector">
+                    <a class="nav" id="nav1" onclick="nav('conteudo','instrucoes','nav1','nav2','ico1','ico2')"><img src="img/text.svg" class="ico" id="ico1" style="margin-right: 1%;">Contextualização</a>
+                    <a class="nav" id="nav2" onclick="nav('instrucoes','conteudo','nav2','nav1','ico2','ico1')"><img src="img/question.svg" class="ico" id="ico2">Funcionamento</a>
+                </div>
+                <button class="close" onclick="ride('modal','window')"><img class="x" src="img/close.svg"></button>
             </div>
-            <div class="conteudo">
-                <p>AAA</p>
+            <div class="conteudo" id="conteudo">
+                <h4>Órbitas de corpos massivos</h4>
+                <p>As leis <b>clássicas</b> da dinâmica e da gravitação implicam que uma partícula de massa $m$, sujeita a um campo gravitacional gerado por um corpo de massa $M >> m$, descreve um movimento restrito a um plano e caracterizado por coordenadas polares $(r(t),θ(t))$, que satisfazem
+                    $$
+                    \frac{d\theta(t)}{dt} = \frac{L}{mr(t)^2} \qquad \qquad
+                    $$
+                e
+                    $$
+                    \frac{m}{2}\left(\frac{d r(t)}{d t}\right)^2+U_{\text {efetiva }}(r)=E
+                    $$
+                onde $L$ e $E$ (respectivamente o módulo do momento angular e a energia do sistema) são quantidades conservadas, e a energia potencial efetiva é dada por 
+                    $$
+                    U_{e f e t i v a}=-\frac{G M m}{r(t)}+\frac{L^2}{2 m r(t)^2}
+                    $$
+                Na <b>Relatividade Geral</b>, embora a gravitação seja descrita de forma conceitualmente distinta da física clássica, a equação fundamental que descreve o movimento de uma partícula de massa $m$ se movendo nas vizinhanças de um corpo central de massa $M >> m$ pode ser escrita como em (2), mas com a nova energia potencial efetiva:
+                    $$
+                    U_{e f e t i v a}^{(R G)}=-\frac{G M m}{r(t)}+\frac{L^2}{2 m r(t)^2}-\frac{G M L^2}{m c^2 r(t)^3}
+                    $$
+                    O parâmetro E ainda está associado (embora não seja igual) à energia do sistema e, junto com o momento angular $L$, são quantidades conservadas.
+                </p>
+                <p class="green-text">Tanto no caso clássico quando no relativístico, muitas características qualitativas do movimento podem ser entendidas simplesmente da análise do gráfico de energia potencial correspondente. <i>Neste simulador, você pode comparar suas previsões qualitativas com o formato da órbita obtido da integração numérica das equações de movimento!</i></p>
+                <p>Para mais informações, veja: <i>[link para artigo]</i></p>
+            </div>
+            <div class="instrucoes" id="instrucoes" style="display: none;">
+                <h4>Funcionamento do programa</h4>
+                <img src="img/funcionamento1.png" style="width: 96%;margin-left: 2%;margin-right: 2%">
             </div>
         </div>
 
         <article>
-            <p>oi</p>
+            <py-script src="py/trajetoria.py"></py-script>
+            <div class="programa">
+                <h5><a style="color:#ffdb57;">1.</a> Insira o valor do momento angular adimensional:</h5>
+                <div class="input">
+                    <p>Escolha entre 0 e 15:</p>
+                    <input type="range" value="0.0" min="0.0" max="15.0" step="0.1" style="width: 100%;" oninput="rangevalue.value=value"/>
+                    <div class="value">
+                        <p class="inicial">0.0</p>
+                        <output id="rangevalue">0.0</output>
+                        <p class="final">15.0</p>
+                    </div>
+                </div>
+                <button class="click" id="click1" py-click="gerarPotencial1()" onclick="return limpaDiv('parte2')">Gerar Potencial</button>
+                <div class="valores" id="valores" style="display: none">
+                    <p id="values">Para esse valor do momento angular, a energia potencial efetiva não possui um mínimo ou máximo local.</p>
+                </div>
+                <div class="graf1" id="graph"></div>
+                <div id="parte2" style="display: none;">
+                    <h5><a style="color:#ffdb57;">2.</a> Insira o valor do parâmetro de energia:</h5>
+                    <div class="input">
+                        <p>O valor escolhido deve ser maior que o mínimo da energia potencial efetiva, calculado no passo anteior.</p>
+                        <input type="number" step="0.00001" value="0.00000" class="css-input" id="number"/>
+                    </div>
+                    <button class="click" id="click2" onclick="limpaDiv2()" py-click="gerarOrbita1()">Gerar Órbita</button>
+                </div>
+                <div id="parte3" style="display: none;">
+                    <h5><a style="color:#ffdb57;">3.</a> Insira o número de voltas completas na órbita:</h5>
+                    <div class="input">
+                        <p>Como o parâmetro de energia escolhido no passo anterior gera uma órbita ligada (Já que $U_{eff,min} ≤ E < 0$), escolha também o número de órbitas que deseja traçar:</p>
+                        <p>Escolha entre 1 e 20:</p>
+                        <input type="range" value="1" min="1" max="20" step="1" style="width: 100%;" oninput="rangevalue2.value=value"/>
+                        <div class="value">
+                            <p class="inicial">1</p>
+                            <output id="rangevalue2">1</output>
+                            <p class="final">20</p>  
+                        </div>
+                    </div>
+                    <button class="click" id="click2" onclick="limpaDiv2()" py-click="gerarOrbita1()">Gerar Órbita</button>
+                    <div class="graf1" id="graph2"></div>
+                </div>
+            </div>
         </article>
     </div>
 
