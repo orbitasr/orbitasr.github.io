@@ -201,7 +201,7 @@ strong {
     max-height: 90%;
 }
 
-.conteudo {
+.conteudo , .instrucoes {
     max-height: 90%;
     overflow: auto;
 }
@@ -241,7 +241,7 @@ strong {
     background-color: #ffffff;
 }
 
-#nav1 {
+#nav1 , #nav1b {
     margin-right: 2%;
     color: var(--destaque);
 }
@@ -285,7 +285,8 @@ article {
     background-color: #f7f7f7;
     width: 98%;
     margin: 0 auto;
-    border-radius: 4px;
+    margin-bottom: 0.8%;
+    border-radius: 6px;
     display: flex;
 }
 
@@ -345,21 +346,29 @@ div.value {
 }
 
 .graf1 {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 100%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .graf1 img {
     width: 100%;
 }
 
-.valores {
+.graf2 img {
+    width: 100%;
+}
+
+.valor {
     background-color: #ffeca5;
     border-style: solid;
     border-width: 2px;
     border-radius: 4px;
     border-color: var(--destaque);
+    padding: 2%;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .css-input {

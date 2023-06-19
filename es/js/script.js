@@ -1,6 +1,7 @@
 // Função que é executada sempre que a página é aberta
 function init() {
     document.getElementById('ico1').classList.add('select');
+    document.getElementById('ico1b').classList.add('select');
     if (localStorage.getItem("mode") == "dark") {
         dark();
     }
@@ -35,7 +36,7 @@ function openModal(a,b) {
     document.getElementById(b).style.display='block';
 }
 
-function ride(a,b){
+function hide(a,b){
     document.getElementById(a).style.display='none';
     document.getElementById(b).style.display='none';
 }
@@ -59,24 +60,36 @@ function getValues() {
 
 setInterval(getValues,100);
 
+function mostraPasso3() {
+    var orbitas = pyscript.interpreter.globals.get('orbitas');
+    if (orbitas) {
+        document.getElementById("parte3").style.display='block';
+    }
+}
+
+setInterval(mostraPasso3,100);
+
 function limpaDiv(show){
-    document.getElementById("valores").style.display='block';
     document.getElementById(show).style.display='block';
+    titulo = document.getElementById("titulo");
+    titulo.style.display="block";
+    info = document.getElementById("valores");
+    info.style.display='block';
+    info.firstChild.remove();
     var graph = document.getElementById("graph");
     graph.firstChild.remove();
     graph.firstChild.remove();
-    thereIsValue = pyscript.interpreter.globals.get('thereIsValue');
-    if (theIsValue == true) {
-        vmin = pyscript.interpreter.globals.get('vmin');
-        vmax = pyscript.interpreter.globals.get('vmax');
-        document.getElementById("values").innerHTML = "O mínimo e o máximo da energia potencial efetiva são" + vmin + " e "  + vmax + "(ver pontos no gráfico)";
-    }
     return false
 }
 
 function limpaDiv2() {
+    var titulo2 = document.getElementById("titulo2");
+    titulo2.style.display="block";
     var graph = document.getElementById("graph2");
     graph.firstChild.remove();
+    var info = document.getElementById("infos");
+    info.firstChild.remove();
+    
 }
 
 function limpaDiv3() {
