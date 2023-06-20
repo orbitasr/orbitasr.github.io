@@ -219,8 +219,21 @@
         </article>
     </div>
 
+    <div class="modal" id="sobre" style="display: none;" onclick="hide('sobre','window3')"></div>
+            <div class="window" id="window3" style="display: none;" >
+                <div class="titlebar" style="height: 40px;">
+                    <button class="close" onclick="hide('sobre','window3')"><img class="x" src="img/close.svg"></button>
+                </div>
+                <div class="conteudo" id="conteudo2">
+                    <a></a>
+                </div> 
+            </div>
+
     <footer>
-        <a class="foot"><img class="about" src="img/info.svg"><p class="foot">Sobre este site</p></a>
+        <a class="foot" onclick="openModal('sobre','window3')">
+            <img class="about" src="img/info.svg">
+            <p class="foot">Sobre este site</p>
+        </a>
     </footer>
 </body>
 
