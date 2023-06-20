@@ -305,7 +305,7 @@ def gerarOrbitaM():
 
 
 #elif tipo_orbita == "L":
-def gerarOrbitaL(choice):
+def gerarOrbitaL():
     # Definições básicas
     r_escala = 1/2 # Todas as expressões estão em unidades de M, mas o input é em unidades do raio gravitacional (2*M).
     eps = 1e-8

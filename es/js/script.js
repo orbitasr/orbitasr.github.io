@@ -128,6 +128,8 @@ function limpaDiv2() {
 }
 
 function limpaDiv3() {
+    var titulo3 = document.getElementById("titulo3");
+    titulo3.style.display="block";
     var graph = document.getElementById("graph3");
     graph.firstChild.remove();
 }
