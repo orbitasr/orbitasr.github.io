@@ -34,9 +34,10 @@ eps = 1e-8
 test_mode = False # Se True, gráfico do potencial é mostrado, a fim de testar consistência dos resultados. Se False, só o gif é exibido.
 
 # Input: trajetória tipo-tempo ('M') ou tipo-luz ('L')
-tipo_orbita = input("Escolha 'M' para órbita de corpos celestes e 'L' órbitas de raios de luz: ")
+#tipo_orbita = input("Escolha 'M' para órbita de corpos celestes e 'L' órbitas de raios de luz: ")
 
-if tipo_orbita == "M":
+#if tipo_orbita == "M":
+def gerarOrbitaM():
     
     # Definindo funções importantes
 
@@ -53,18 +54,23 @@ if tipo_orbita == "M":
         return tau_integrand
     
     # Input: posição inicial
-    x0input = input("Escolha o valor da posição inicial (em km): ")
+    #x0input = input("Escolha o valor da posição inicial (em km): ")
+    from js import x
+    x0input = x
     if isNumeric(x0input):
         x0 = float(x0input)
     else:
         x0 = 0 # Se o input não é numérico, atribui um valor nulo para gerar mensagem de erro abaixo.
 
     if x0 <= rg:
-        print("ATENÇÃO: Escolha um valor da posição inicial maior que 3 km, caso contrário, a trajetória já começa dentro do buraco negro.")    
+        #print("ATENÇÃO: Escolha um valor da posição inicial maior que 3 km, caso contrário, a trajetória já começa dentro do buraco negro.")
+        display("ATENÇÃO: Escolha um valor da posição inicial maior que 3 km, caso contrário, a trajetória já começa dentro do buraco negro.", target="graph")    
     else:
         # Input: módulo da velocidade inicial
-        v0input = input("Escolha o valor da velocidade inicial (em unidades da velocidade da luz): ")
- 
+        #v0input = input("Escolha o valor da velocidade inicial (em unidades da velocidade da luz): ")
+        from js import v0js
+        v0input = v0js
+
         if isNumeric(v0input) and eval(v0input) < 1:
             v0 = abs(float(v0input)) #Força um valor positivo.
             
@@ -75,7 +81,9 @@ if tipo_orbita == "M":
             E = v(ust, l) + eps  # Hipótese: dr/dt = 0 inicialmente.
             
             if test_mode == True:      
-                print("Energia: ",E,". Momento angular: ", l)
+                #print("Energia: ",E,". Momento angular: ", l)
+                t = "Energia: " + E +". Momento angular: " + l
+                display(t, target="graph", append=True)
                 r = np.arange(2, 10, 1 / 10000)
                 u = 1 / r
                 fig1 = plt.figure()
@@ -113,12 +121,14 @@ if tipo_orbita == "M":
                 ist = closest(tps, ust)[0]
                 if E >= 0:
                     if ist == 0:
-                        print("Para essa escolha de parâmetros, a partícula escapa do buraco negro.") # Órbita de espalhamento
+                        #print("Para essa escolha de parâmetros, a partícula escapa do buraco negro.") # Órbita de espalhamento
+                        display("Para essa escolha de parâmetros, a partícula escapa do buraco negro.", target="graph", append=True)
                         u1 = ust * (1 - eps)
                         u2 = ust / 10
                         norbit = 0.5
                     elif ist == 1:
-                        print("Para essa escolha de parâmetros, a partícula cai no buraco negro.") # Órbita de captura
+                        #print("Para essa escolha de parâmetros, a partícula cai no buraco negro.") # Órbita de captura
+                        display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="graph", append=True)
                         u1 = ust * (1 + eps)
                         u2 = 0.55
                         norbit = 0.5
@@ -133,7 +143,8 @@ if tipo_orbita == "M":
                             u1 = ust * (1 - eps)
                             u2 = tps[0] * (1 + eps)
                         elif ist == 2:
-                            print("Para essa escolha de parâmetros, a partícula cai no buraco negro.") # Órbita de captura
+                            #print("Para essa escolha de parâmetros, a partícula cai no buraco negro.") # Órbita de captura
+                            display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="graph", append=True)
                             u1 = ust * (1 + eps)
                             u2 = 0.55
                             norbit = 0.5
@@ -277,9 +288,11 @@ if tipo_orbita == "M":
          #       time.sleep(0.01)
             #
             
-            ani1 = animation.FuncAnimation(fig, animate, frames=range(0, len(x), skipframes), interval=30, blit=True, repeat=False)
+            #ani1 = animation.FuncAnimation(fig, animate, frames=range(0, len(x), skipframes), interval=30, blit=True, repeat=False)
+            ani1 = animation.HTMLWriter(fps=30, codec=None, bitrate=None, extra_args=None, metadata=None, embed_frames=False, default_mode='loop', embed_limit=None)
             
-            plt.show()
+            #plt.show()
+            display(plt, target="graph", append=True)
         
         else:
             print("ATENÇÃO: Valor inválido para a velocidade inicial, que deve ser um número menor que 1.") 
@@ -287,7 +300,7 @@ if tipo_orbita == "M":
     # HTML(ani1.to_jshtml())
     # components.html(ani1.to_jshtml(),height=800)
 
-
+""""
 if tipo_orbita == "L":
         # Definindo funções importantes
 
@@ -433,4 +446,4 @@ if tipo_orbita == "L":
         
     else:
         print("ATENÇÃO: Valor inválido para o parâmetro de impacto.")    
-
+"""
