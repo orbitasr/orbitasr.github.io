@@ -38,7 +38,7 @@ def gerarPotencial():
         borda = '#f7f7f7'
     else:
         eixos = 'white'
-        borda = '#0E1117'
+        borda = '#181F2F'
     
     #Input: valor do momento angular adimensional (l>0)
     #linput = input("Insira o valor do momento angular adimensional: ")
@@ -136,7 +136,7 @@ def gerarOrbitaM():
             borda = '#f7f7f7'
         else:
             eixos = 'white'
-            borda = '#0E1117'
+            borda = '#181F2F'
         #Input: valor do parâmetro de energia (E>-0.5)
         #Einput = input("Insira o valor do parâmetro de energia: ")
         from js import e
@@ -364,7 +364,7 @@ def gerarOrbitaL(choice):
         borda = '#f7f7f7'
     else:
         eixos = 'white'
-        borda = '#0E1117'
+        borda = '#181F2F'
     # kinput = input("Escolha o valor do parâmetro de energia (k): ")
     if isNumeric(kinput) and eval(kinput) > 0:
         k = eval(kinput)

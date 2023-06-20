@@ -6,8 +6,16 @@
 :root {
     --texto: #000000;
     --fundo: #ededed;
+    --botoes: #f6f6f6;
+    --borda: #e3e3e3;
+    --bordax: #f6f6f6;
+    --input: #f0f0f0;
+    --hover: #ffffff;
+    --hoverx: #e6e6e6;
     --pontos: #c1bfbf;
     --destaque: #ffdb57;
+    --artigo: #f7f7f7;
+    --titlebar: #cecece;
 }
 
 body {
@@ -39,6 +47,7 @@ h3 {
     margin-top: 5%;
     text-align: center;
     font-weight: normal;
+    color: var(--texto);
 }
 
 h4 {
@@ -57,7 +66,7 @@ h4 {
 
 h5 {
     text-align: center;
-    color: black;
+    color: var(--texto);
     padding: 2%;
     margin-left: 2%;
     margin-right: 2%;
@@ -86,6 +95,7 @@ p.green-text {
 
 a, a:visited {
     text-decoration: none;
+    color: var(--texto);
 }
 
 strong {
@@ -98,11 +108,11 @@ strong {
     top: 1.5%;
     width: 40px;
     height: 40px;
-    background-color: #f6f6f6;
+    background-color: var(--botoes);
     border-style: solid;
     border-radius: 6px;
     border-width: 1px;
-    border-color: #e3e3e3;
+    border-color: var(--borda);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,7 +120,7 @@ strong {
 
 .botao:hover {
     border-color: #FFC700;
-    background-color: #ffffff;
+    background-color: var(--hover);
     border-width: 2px;
 }
 
@@ -126,6 +136,10 @@ strong {
     right: 0.5%;
 }
 
+.dark-mode .lightbulb, .dark-mode .question, .dark-mode .back, .dark-mode .x, .dark-mode .ico {
+    filter: invert(99%) sepia(0%) saturate(234%) hue-rotate(31deg) brightness(115%) contrast(78%);
+}
+
 .question, .back {
     width: 90%;
 }
@@ -137,13 +151,13 @@ strong {
 .card {
     width: 280px;
     height: 280px;
-    background-color: #f6f6f6;
-    background-image: radial-gradient(#e6e6e6 0.85px, #f6f6f6 0.85px);
+    background-color: var(--botoes);
+    background-image: radial-gradient(var(--hoverx) 0.85px, var(--botoes) 0.85px);
     background-size: 17px 17px;
     border-style: solid;
     border-radius: 6px;
     border-width: 1.8px;
-    border-color: #e3e3e3;
+    border-color: var(--borda);
     margin: auto;
     display: flex;
     align-items: center;
@@ -152,8 +166,8 @@ strong {
 
 .card:hover {
     border-color: var(--destaque);
-    background-color: #ffffff;
-    background-image: radial-gradient(#e6e6e6 0.85px, #ffffff 0.85px);
+    background-color: var(--hover);
+    background-image: radial-gradient(var(--hoverx) 0.85px, var(--hover) 0.85px);
 }
 
 #left {
@@ -194,7 +208,7 @@ strong {
     top: 5%;
     bottom: 5%;
     left: 20%;
-    background-color: #f6f6f6;
+    background-color: var(--botoes);
     border: #c1bfbf;
     border-radius: 8px;
     width: 60%;
@@ -207,7 +221,7 @@ strong {
 }
 
 .titlebar {
-    background-color: #cecece;
+    background-color: var(--titlebar);
     display: flex;
     width: 100%;
     border-radius: 4px 4px 0px 0px;
@@ -224,13 +238,13 @@ strong {
     display: flex;
     align-items: center;
     justify-items: center;
-    background-color: #f6f6f6;
+    background-color: var(--botoes);
     padding-left: 2%;
     padding-right: 2%;
     border-style: solid;
     border-radius: 6px;
-    border-color: #f6f6f6;
-    border-width: 2px;
+    border-color: var(--bordax);
+    border-width: 1.5px;
     height: 38px;
     font-family: 'roboto', sans-serif;
 }
@@ -238,7 +252,7 @@ strong {
 .nav:hover {
     cursor: default;
     border-color: var(--destaque);
-    background-color: #ffffff;
+    background-color: var(--hover);
 }
 
 #nav1 , #nav1b {
@@ -259,11 +273,11 @@ strong {
 .close {
     width: 40px;
     height: 40px;
-    background-color: #f6f6f6;
+    background-color: var(--botoes);
     border-style: solid;
     border-radius: 6px;
     border-width: 1px;
-    border-color: #e3e3e3;
+    border-color: var(--borda);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,7 +287,7 @@ strong {
 
 .close:hover {
     border-color: var(--destaque);
-    background-color: #ffffff;
+    background-color: var(--hover);
     border-width: 2px;
 }
 
@@ -282,7 +296,7 @@ strong {
 }
 
 article {
-    background-color: #f7f7f7;
+    background-color: var(--artigo);
     width: 98%;
     margin: 0 auto;
     margin-bottom: 0.8%;
@@ -296,7 +310,7 @@ article {
 }
 
 .input {
-    background-color: #f0f0f0;
+    background-color: var(--input);
     border-radius: 5px;
     padding: 0.1% 2% 2% 2%;
     width: 80%;
@@ -309,6 +323,10 @@ div.value {
     width: 100%;
     display: flex;
     align-items: center;
+}
+
+.dark-mode #rangevalue, .dark-mode #rangevalue2 , .dark-mode #rangevalue3 ,.dark-mode #infos {
+    color: white;
 }
 
 .inicial {
@@ -377,7 +395,7 @@ div.value {
     font-size: 16px;
     border-width: 2px;
     border-color: var(--texto);
-    background-color: #ededed;
+    background-color: var(--fundo);
     color: var(--texto);
     border-style: solid;
     border-radius: 6px;
@@ -470,7 +488,7 @@ input[type="range"]::-moz-range-track {
   
   /* slider thumb */
 input[type="range"]::-moz-range-thumb {
-    background-color: #ffffff;
+    background-color: var(--hover);
     border: none; /*Removes extra border that FF applies*/
     border-radius: 0.5rem;
     height: 1rem;
