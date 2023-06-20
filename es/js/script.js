@@ -90,8 +90,7 @@ function getValues() {
     e = document.getElementById("number").value;
     o = document.getElementById("rangevalue2").value;
     mode = localStorage.getItem("mode");
-    D1 = document.getElementById("rangevalue3").value;
-    D2 = document.getElementById("number2").value;
+    d = document.getElementById("number2").value;
 }
 
 setInterval(getValues,100);

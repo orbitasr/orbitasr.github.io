@@ -10,15 +10,9 @@
 
 ## Falta fazer (Alessandro):
 
-- autoscroll
-
-- mudar posição de modal para centro independente do scroll
-
 - homepage
 
 - editar imagem potencial
-
-- tirar input range do orbitas luz, manter só numérico
 
 - adaptar para dispositivos móveis
 

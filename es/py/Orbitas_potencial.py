@@ -354,10 +354,8 @@ def gerarOrbitaL(choice):
    #     k = 1 / (b ** 2)
 
     #INPUT (opção 2): Parâmetro de energia
-    from js import D1, D2, mode
-
-    if choice == 1: kinput = D1
-    if choice == 2: kinput = D2
+    from js import d, mode
+    kinput = d
 
     if mode == 'light':
         eixos = '#5e6469'
