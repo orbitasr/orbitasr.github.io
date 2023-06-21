@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Órbitas Relativísticas</title>
+    <link rel="icon" type="image/x-icon" href="es/img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="es/css/style.css" media="screen"/>
+    <script src="es/js/script.js"></script>
+</head>
+
+
+<body onload="init()">
+    <button class="botao" id="dark" onclick="change()"><img class="lightbulb" src="es/img/lightbulb.svg"></button>
+    <h1>ÓRBITAS<br>RELATIVÍSTICAS</h1>
+    <div class="menu">
+        <a class="card" id="left" href="es/index.html">
+            <h2>Simuladores<br>para o<br><strong>ensino superior</strong></h2>
+            <img class="icons" src="es/img/arrow.svg">
+        </a>
+        <a class="card" id="right" href="em/index.html">
+            <h2>Simuladores<br>para o<br><strong>ensino médio</strong></h2>
+            <img class="icons" src="es/img/arrow.svg">
+        </a>
+    </div>
+
+    <div class="modal" id="sobre" style="display: none;" onclick="hide('sobre','window3')"></div>
+    <div class="window" id="window3" style="display: none;" >
+        <div class="titlebar" style="height: 40px;">
+            <button class="close" onclick="hide('sobre','window3')"><img class="x" src="img/close.svg"></button>
+        </div>
+        <div class="conteudo" id="conteudo3">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div> 
+    </div>
+
+    <footer>
+        <a class="foot" onclick="openModal('sobre','window3')">
+            <img class="about" src="es/img/info.svg">
+            <p class="foot">Sobre este site</p>
+        </a>
+    </footer>
+</body>
