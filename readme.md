@@ -11,5 +11,3 @@
 ## Falta fazer (Alessandro):
 
 - resolver código GIFs
-
-- botão reiniciar (?) e salvar (?)
