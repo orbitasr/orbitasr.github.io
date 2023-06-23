@@ -89,7 +89,7 @@
         </div>
 
         <article>
-            <py-script src="py/Orbitas_potencial.py"></py-script>
+            <py-script src="py/Orbitas_Massivo.py"></py-script>
             <div class="programa">
                 <h5><a style="color:#ffdb57;">1.</a> Insira o valor do momento angular adimensional:</h5>
                 <div class="input">
@@ -142,7 +142,7 @@
                 <article>
                     <div class="programa">
                         <div id="titulo2" style="display: none;"><h5>Gráfico da Órbita</h5></div>
-                        <div id="infos"></div>
+                        <div class="info" id="infos"></div>
                         <div class="graf1" id="graph2"></div>
                     </div>
                 </article>
@@ -188,16 +188,22 @@
                 </div>    
                 <div class="instrucoes" id="instrucoes2" style="display: none;">
                     <h4>Funcionamento do programa</h4>
-                    <p>O potencial efetivo para o movimento de raios de luz tem a forma indicada abaixo, onde $r_g=2 G M / c^2$ é determinado pela massa do corpo central (no caso de um corpo com a massa do Sol, $r_g ≈ 3km$). O máximo do potencial efetivo ocorre para $r = 1.5 r_g$.</p>
-                    <img src="img/potencialLuzLight.png" id="potencialluz" style="margin-left: 20%; width: 60%;">
                     <p>No simulador a seguir, você deve inserir o valor do <b>parâmetro de impacto</b>, em unidades de $r_g$. Note que o valor do parâmetro de impacto <b>crítico</b> (tal que $1/d_{cr}^2 = V_{efetivo, max}$) é ${d}_{cr} ≈ 2.5981 {r}_{g}$. O programa retornará um gráfico correspondente à trajetória da partícula com esse parâmetro de impacto. Você pode tanto explorar uma faixa definida de valores de $d$ quanto inserir o valor desejado diretamente.</p>
                 </div> 
             </div>
         
         <h3>ÓRBITAS RELATIVÍSTICAS DE RAIOS DE LUZ</h3>
+        <py-script src="py/Orbitas_Luz.py"></py-script>
         <article>
             <div class="programa">
-                <h5><a style="color:#ffdb57;">1.</a>Escolha o valor do parâmetro de impacto $d$, em unidades de $r_g$:</h5>
+                <h5>Gráfico da Energia Potencial Efetiva</h5>
+                <img src="img/potencialluzLight.png" id="potencialluz" style="margin-left: 10%; width: 80%;">
+                <div class="valor">O potencial efetivo para raios de luz tem um máximo local de $0.037037037...$ em $r = 1.5 r_g$</div>
+            </div>
+        </article>
+        <article>
+            <div class="programa">
+                <h5><a style="color:#ffdb57;">1.</a>Escolha o valor do parâmetro de energia (k):</h5>
                 <div class="input" style="padding-top: 2%;">
                     <input type="number" step="0.0001" value="0.0" class="css-input" id="number2"/>
                 </div>
@@ -207,8 +213,8 @@
         <article>
             <div class="programa" id="graficoluz">
                 <h5 id="titulo3" style="display: none;">Gráfico da Órbita</h5>
-                <div class="graf1" id="graph3"></div>
-                <div id="info2"></div>
+                <div class="graf1" id="graph4"></div>
+                <div class="info" id="info3"></div>
             </div>
         </article>
     </div>

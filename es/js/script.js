@@ -25,7 +25,7 @@ function dark() {
     r.style.setProperty('--bordax', 'e3e3e3');
     var element = document.body;
     element.classList.add("dark-mode");
-    document.getElementById("potencialluz").src="img/potencialLuzDark.png";
+    document.getElementById("potencialluz").src="img/potencialluzDark.png";
 }
 
 function light(){
@@ -43,7 +43,7 @@ function light(){
     r.style.setProperty('--bordax', '#f6f6f6');
     var element = document.body;
     element.classList.remove("dark-mode");
-    document.getElementById("potencialluz").src="img/potencialLuzLight.png";
+    document.getElementById("potencialluz").src="img/potencialluzLight.png";
 }
 
 function change() {
@@ -130,6 +130,8 @@ function limpaDiv2() {
 function limpaDiv3() {
     var titulo3 = document.getElementById("titulo3");
     titulo3.style.display="block";
-    var graph = document.getElementById("graph3");
+    var graph = document.getElementById("graph4");
     graph.firstChild.remove();
+    var info3 = document.getElementById("info3");
+    info3.firstChild.remove();
 }

@@ -329,7 +329,7 @@ div.value {
     align-items: center;
 }
 
-.dark-mode #rangevalue, .dark-mode #rangevalue2 , .dark-mode #rangevalue3 ,.dark-mode #infos {
+.dark-mode #rangevalue, .dark-mode #rangevalue2 , .dark-mode #rangevalue3 ,.dark-mode .info {
     color: white;
 }
 

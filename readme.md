@@ -10,12 +10,6 @@
 
 ## Falta fazer (Alessandro):
 
-- homepage
-
-- editar imagem potencial
-
 - adaptar para dispositivos móveis
-
-- resolver input do simulador de orbitas de raio de luz (estático)
 
 - resolver código GIFs
