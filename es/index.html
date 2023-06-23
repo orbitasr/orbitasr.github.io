@@ -27,6 +27,8 @@
 
 <body onload="init()">
 
+    <!--------------------------------------------------------------------------------------------->
+
     <div id="inicio" style="display: block">
         <button class="botao" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
         <h1>ÓRBITAS<br>RELATIVÍSTICAS</h1>
@@ -41,6 +43,8 @@
             </a>
         </div>
     </div>
+
+    <!--------------------------------------------------------------------------------------------->
 
     <div id="corpos-massivos" style="display: none">
 
@@ -84,7 +88,7 @@
             </div>
             <div class="instrucoes" id="instrucoes" style="display: none;">
                 <h4>Funcionamento do programa</h4>
-                <img src="img/funcionamento1.png" style="width: 96%;margin-left: 2%;margin-right: 2%">
+                <div id="funcionamento"></div>
             </div>
         </div>
 
@@ -148,7 +152,9 @@
                 </article>
     </div>
 
-    <div id="raios-de-luz" style="display: none">
+<!--------------------------------------------------------------------------------------------->
+   
+<div id="raios-de-luz" style="display: none">
         <button class="botao" title="Voltar" id="voltar" onclick="show('inicio','raios-de-luz')"><img class="back" src="img/back.svg"></button>
         <button class="botao" title="Abrir informações" id="info" onclick="openModal('modal2','window2')"><img class="question" src="img/question.svg"></button>
         <button class="botao" title="Ativar modo escuro" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
@@ -182,7 +188,7 @@
 
                     Para entender o significado do parâmetro de impacto, considere um raio de luz que vem de muito longe, se movendo paralelamente ao eixo-x: o parâmetro de impacto $d$ é justamente a distância ao eixo-x, como mostra a figura abaixo.
                     </p>
-                    <img src="img/parametro.png" class="lightbulb" style="margin-left:30%; width: 40%;">
+                    <img src="img/parametro.png" class="lightbulb" id="parametro">
                     <p class="green-text">Tanto no caso clássico quando no relativístico, muitas características qualitativas do movimento podem ser entendidas simplesmente da análise do gráfico de energia potencial correspondente. <i>Neste simulador, você pode comparar suas previsões qualitativas com o formato da órbita obtido da integração numérica das equações de movimento!</i></p>
                 <p>Para mais informações, veja: <i>[link para artigo]</i></p>
                 </div>    
@@ -197,7 +203,7 @@
         <article>
             <div class="programa">
                 <h5>Gráfico da Energia Potencial Efetiva</h5>
-                <img src="img/potencialluzLight.png" id="potencialluz" style="margin-left: 10%; width: 80%;">
+                <img src="img/potencialluzLight.png" id="potencialluz">
                 <div class="valor">O potencial efetivo para raios de luz tem um máximo local de $0.037037037...$ em $r = 1.5 r_g$</div>
             </div>
         </article>
@@ -218,6 +224,8 @@
             </div>
         </article>
     </div>
+
+    <!--------------------------------------------------------------------------------------------->
 
     <div class="modal" id="sobre" style="display: none;" onclick="hide('sobre','window3')"></div>
     <div class="window" id="window3" style="display: none;" >
