@@ -10,6 +10,6 @@
 
 ## Falta fazer (Alessandro):
 
-- adaptar para dispositivos móveis
-
 - resolver código GIFs
+
+- botão reiniciar (?) e salvar (?)

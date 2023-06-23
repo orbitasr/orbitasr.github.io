@@ -4,6 +4,11 @@ from scipy.integrate import quad
 import math
 from matplotlib.patches import Circle
 
+
+def reiniciar():
+    global orbitas
+    orbitas = False
+
 #Muda cor do gráfico de acordo com tema do site ~ A
 def mudarCor():
     from js import mode

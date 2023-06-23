@@ -1,3 +1,5 @@
+orbitas = false;
+
 // Função que é executada sempre que a página é aberta
 function init() {
     document.getElementById('ico1').classList.add('select');
@@ -96,7 +98,7 @@ function getValues() {
 setInterval(getValues,100);
 
 function mostraPasso3() {
-    var orbitas = pyscript.interpreter.globals.get('orbitas');
+    orbitas = pyscript.interpreter.globals.get('orbitas');
     if (orbitas) {
         document.getElementById("parte3").style.display='block';
     }
@@ -106,8 +108,8 @@ setInterval(mostraPasso3,100);
 
 function limpaDiv(show){
     document.getElementById(show).style.display='block';
-    titulo = document.getElementById("titulo");
-    titulo.style.display="block";
+    pot = document.getElementById("pot");
+    pot.style.display="block";
     info = document.getElementById("valores");
     info.style.display='block';
     info.firstChild.remove();
@@ -118,8 +120,8 @@ function limpaDiv(show){
 }
 
 function limpaDiv2() {
-    var titulo2 = document.getElementById("titulo2");
-    titulo2.style.display="block";
+    var GrafM = document.getElementById("GrafM");
+    GrafM.style.display="block";
     var graph = document.getElementById("graph2");
     graph.firstChild.remove();
     var info = document.getElementById("infos");
@@ -134,4 +136,15 @@ function limpaDiv3() {
     graph.firstChild.remove();
     var info3 = document.getElementById("info3");
     info3.firstChild.remove();
+}
+
+function reiniciar() {
+    orbitas = false;
+    document.getElementById("pot").style.display="none";
+    document.getElementById("parte2").style.display="none";
+    document.getElementById("parte3").style.display="none";
+    document.getElementById("GrafM").style.display="none";
+    document.getElementById("rangevalue").value=0.0;
+    document.getElementById("number").value=0.0;
+    document.getElementById("rangevalue2").value=1;
 }

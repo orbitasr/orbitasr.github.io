@@ -94,7 +94,7 @@
 
         <article>
             <py-script src="py/Orbitas_Massivo.py"></py-script>
-            <div class="programa">
+            <div class="programa" id="M_Inicio">
                 <h5><a style="color:#ffdb57;">1.</a> Insira o valor do momento angular adimensional:</h5>
                 <div class="input">
                     <p>Escolha entre 0 e 15:</p>
@@ -109,8 +109,8 @@
             </div>
         </article>
         <article>
-            <div class="programa">
-                <div id="titulo" style="display: none;"><h5>Gráfico da Energia Potencial Efetiva</h5></div>
+            <div class="programa" id="pot" style="display: none">
+                <div id="titulo"><h5>Gráfico da Energia Potencial Efetiva</h5></div>
                 <div class="graf1" id="graph"></div>
                 <div class="valor" id="valores" style="display: none"></div>
             </div>
@@ -144,10 +144,12 @@
                 </div></article>
                 </div>
                 <article>
-                    <div class="programa">
-                        <div id="titulo2" style="display: none;"><h5>Gráfico da Órbita</h5></div>
+                    <div class="programa" id="GrafM" style="display: none;">
+                        <div id="titulo2"><h5>Gráfico da Órbita</h5></div>
                         <div class="info" id="infos"></div>
                         <div class="graf1" id="graph2"></div>
+                        <br>
+                        <a href="#M_Inicio"><button class="click" py-click="reiniciar()" onclick="reiniciar()">Reiniciar</button></a>
                     </div>
                 </article>
     </div>
