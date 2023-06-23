@@ -1,0 +1,627 @@
+/*Gerais*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --texto: #000000;
+    --fundo: #ededed;
+    --botoes: #f6f6f6;
+    --borda: #e3e3e3;
+    --bordax: #f6f6f6;
+    --input: #f0f0f0;
+    --hover: #ffffff;
+    --hoverx: #e6e6e6;
+    --pontos: #c1bfbf;
+    --destaque: #ffdb57;
+    --artigo: #f7f7f7;
+    --titlebar: #cecece;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 0 0 0;
+    background-color: var(--fundo);
+    background-image: radial-gradient(var(--pontos) 0.85px, var(--fundo) 0.85px);
+    background-size: 17px 17px;
+    height: 90vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 10vh;
+    text-align: center;
+    color: var(--texto);
+    font-weight: normal;
+}
+
+h2 {
+    font-size: xx-large;
+    text-align: left;
+    padding-left: 10%;
+    color: var(--texto);
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 6vh;
+    margin-top: 5%;
+    text-align: center;
+    font-weight: normal;
+    color: var(--texto);
+}
+
+h4 {
+    text-align: center;
+    background-color: var(--destaque);
+    color: black;
+    border-radius: 6px;
+    padding: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: xx-large;
+}
+
+h5 {
+    text-align: center;
+    color: var(--texto);
+    padding: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: xx-large;
+}
+
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: x-large;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+p {
+    text-align: justify;
+    color: var(--texto);
+    font-weight: normal;
+    font-family: 'roboto', sans-serif;
+    line-height: 2;
+    margin-left: 2%;
+    margin-right: 2%; 
+}
+
+p.green-text {
+    padding: 2%;
+    color: #05561f;
+    background-color: #a9ebbe;
+    border-radius: 6px;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: var(--texto);
+}
+
+strong {
+    color: var(--destaque);
+    font-weight: normal;
+}
+
+.botao {
+    position: fixed;
+    top: 1.5%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--botoes);
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--borda);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao:hover {
+    border-color: #FFC700;
+    background-color: var(--hover);
+    border-width: 2px;
+}
+
+#voltar {
+    left: 0.5%;
+}
+
+#info {
+    right: 4%;
+}
+
+#dark {
+    right: 0.5%;
+}
+
+.dark-mode .lightbulb, .dark-mode .question, .dark-mode .back, .dark-mode .x, .dark-mode .ico {
+    filter: invert(99%) sepia(0%) saturate(234%) hue-rotate(31deg) brightness(115%) contrast(78%);
+}
+
+.question, .back {
+    width: 90%;
+}
+
+.menu {
+    display: flex;
+}
+
+.card {
+    width: 280px;
+    height: 280px;
+    background-color: var(--botoes);
+    background-image: radial-gradient(var(--hoverx) 0.85px, var(--botoes) 0.85px);
+    background-size: 17px 17px;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1.8px;
+    border-color: var(--borda);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.card:hover {
+    border-color: var(--destaque);
+    background-color: var(--hover);
+    background-image: radial-gradient(var(--hoverx) 0.85px, var(--hover) 0.85px);
+}
+
+#left {
+    margin-right: 2.5%;
+}
+
+#right {
+    margin-left: 2.5%;
+}
+
+.icons {
+    filter: invert(79%) sepia(89%) saturate(366%) hue-rotate(336deg) brightness(100%) contrast(102%);
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 5vh;
+    height: 5vh;
+}
+
+.modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.window {
+    display: block;
+    z-index: 2;
+    position: fixed;
+    top: 5%;
+    bottom: 5%;
+    left: 20%;
+    background-color: var(--botoes);
+    border: #c1bfbf;
+    border-radius: 8px;
+    width: 60%;
+    max-height: 90%;
+}
+
+.conteudo , .instrucoes {
+    max-height: 90%;
+    overflow: auto;
+}
+
+.titlebar {
+    background-color: var(--titlebar);
+    display: flex;
+    width: 100%;
+    border-radius: 4px 4px 0px 0px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.selector {
+    margin: 0 auto;
+    display: flex;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: var(--botoes);
+    padding-left: 2%;
+    padding-right: 2%;
+    border-style: solid;
+    border-radius: 6px;
+    border-color: var(--bordax);
+    border-width: 1.5px;
+    height: 38px;
+    font-family: 'roboto', sans-serif;
+}
+
+.nav:hover {
+    cursor: default;
+    border-color: var(--destaque);
+    background-color: var(--hover);
+}
+
+#nav1 , #nav1b {
+    margin-right: 2%;
+    color: var(--destaque);
+}
+
+
+.ico {
+    width: 20px;
+    height: 20px;
+}
+
+.select {
+    filter: invert(79%) sepia(89%) saturate(366%) hue-rotate(336deg) brightness(100%) contrast(102%);
+}
+
+.close {
+    width: 40px;
+    height: 40px;
+    background-color: var(--botoes);
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: var(--borda);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1%;
+}
+
+.close:hover {
+    border-color: var(--destaque);
+    background-color: var(--hover);
+    border-width: 2px;
+}
+
+.x {
+    height: 50%;
+}
+
+#funcionamento {
+    width: 800px;
+    height: 400px;
+    background: url('../img/funcionamento1.png') center no-repeat;
+    background-size: contain;
+}
+
+#parametro {
+    margin-left:30%;
+    width: 40%;
+}
+
+article {
+    background-color: var(--artigo);
+    width: 98%;
+    margin: 0 auto;
+    margin-bottom: 0.8%;
+    border-radius: 6px;
+    display: flex;
+}
+
+.programa {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.input {
+    background-color: var(--input);
+    border-radius: 5px;
+    padding: 0.1% 2% 2% 2%;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+div.value {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode #rangevalue, .dark-mode #rangevalue2 , .dark-mode #rangevalue3 ,.dark-mode .info {
+    color: white;
+}
+
+.inicial {
+    width: 45%;
+    text-align: left;
+}
+
+.final {
+    width: 45%;
+    text-align: right;
+}
+
+.click {
+    background-color: var(--destaque);
+    font-family: 'Montserrat', sans-serif;
+    border-color: var(--destaque);
+    color: var(--texto);
+    font-size: large;
+    font-weight: 600;
+    appearance: none;
+    height: 50px;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+div:target {
+    scroll-margin-top: .8em;
+}
+
+.click:hover {
+    background-color: #ffe586;
+
+}
+
+.graf1 {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.graf1 img {
+    width: 100%;
+}
+
+.graf2 img {
+    width: 100%;
+}
+
+.valor {
+    background-color: #ffeca5;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    border-color: var(--destaque);
+    padding: 2%;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#potencialluz {
+    margin-left: 10%;
+    width: 80%;
+}
+
+.css-input {
+    width: 97%;
+    padding: 9px;
+    font-size: 16px;
+    border-width: 2px;
+    border-color: var(--texto);
+    background-color: var(--fundo);
+    color: var(--texto);
+    border-style: solid;
+    border-radius: 6px;
+}
+
+.css-input:focus {
+    border-color: var(--destaque);
+    color: var(--destaque);
+    outline:none;
+}
+
+footer {
+    margin-top: 2%;
+}
+
+.foot {
+    display: flex;
+    justify-content: center;
+    margin-left: 0.5%;
+}
+
+.foot:hover {
+    color: var(--destaque);
+}
+
+.about {
+    filter: invert(79%) sepia(89%) saturate(366%) hue-rotate(336deg) brightness(100%) contrast(102%);
+    margin-right: 1%;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 5px;
+    right:5px;
+    position:absolute;
+}
+
+::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-thumb {
+background:#a2a2a2;
+}
+
+/* INPUT */
+
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 25rem;
+  }
+  
+  /* Removes default focus */
+input[type="range"]:focus {
+    outline: none;
+  }
+  
+  /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+  /* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--destaque);
+    border-radius: 0.5rem;
+    border: none;
+    height: 0.5rem;
+  }
+  
+  /* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -4px; /* Centers thumb on the track */
+    background-color: var(--texto);
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+  
+  /*********** Firefox styles ***********/
+  /* slider track */
+input[type="range"]::-moz-range-track {
+    background-color: var(--destaque);
+    border-radius: 0.5rem;
+    height: 0.5rem;
+  }
+  
+  /* slider thumb */
+input[type="range"]::-moz-range-thumb {
+    background-color: var(--hover);
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+  }
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 10vw;
+    }
+
+    h3 {
+        font-size: 7.5vw;
+        margin-top: 65px;
+    }
+
+    h5 {
+        font-size: x-large;
+    }
+
+    .window {
+        width: 95%;
+        top: 5%;
+        bottom: 5%;
+        left: 2.5%;
+    } 
+
+    .programa {
+        width: 100%;
+    }
+
+    #info {
+        right: 6%;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu {
+        display: block;
+    }
+
+    .card{
+        width: 250px;
+        height: 250px;
+    }
+
+    #left , #right {
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+
+    #info {
+        right: 13%;
+    }
+
+    .selector {
+        margin-left: 0;
+        display: flex;
+        max-width: 80%;
+    }
+
+    p {
+        font-size: small;
+    }
+
+    #parametro{
+        margin-left: 5%;
+        width: 90%;
+    }
+
+    #funcionamento {
+        width: 350px;
+        height: 800px;
+        background: url('../img/funcionamento2.png') center no-repeat;
+        background-size: contain;
+    }
+    
+    .input {
+        width: 95%;
+    }
+
+    .graf1 {
+        width: 100%;
+    }
+
+    .valor{
+        width:95%;
+    }
+
+    .css-input {
+        max-width: 94%;
+    }
+
+    #potencialluz {
+        margin-left: 0%;
+        width: 100%;
+    }
+
+    div:target {
+        scroll-margin-top: 40px;
+    }
+}

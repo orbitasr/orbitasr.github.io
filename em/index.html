@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Órbitas Relativísticas</title>
+    <link rel="icon" type="image/x-icon" href="../es/img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+    <script src="js/script.js"></script>
+    <!--MathJax-->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <!--Pyscript
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-config>
+        packages = ["matplotlib", "numpy", "scipy"]
+        terminal = false
+    </py-config>-->
+</head>
+
+<body onload="init()">
+
+    <!--------------------------------------------------------------------------------------------->
+
+    <div id="inicio" style="display: block">
+        <button class="botao" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
+        <h1>ÓRBITAS<br>RELATIVÍSTICAS</h1>
+        <div class="menu">
+            <a class="card" id="left" onclick="show('corpos-massivos','inicio')">
+                <h2>Órbitas de<br><strong>corpos <br>celestes</strong></h2>
+                <img class="icons" src="img/planet.svg">
+            </a>
+            <a class="card" id="right" onclick="show('raios-de-luz','inicio')">
+                <h2>Órbitas de<br><strong>raios<br>de luz</strong></h2>
+                <img class="icons" src="img/sun.svg">
+            </a>
+        </div>
+    </div>
+
+    <!--------------------------------------------------------------------------------------------->
+
+    <div id="corpos-massivos" style="display: none">
+
+        <button class="botao" title="Voltar" id="voltar" onclick="show('inicio','corpos-massivos')"><img class="back" src="img/back.svg"></button>
+        <button class="botao" title="Abrir informações" id="info" onclick="openModal('modal','window')"><img class="question" src="img/question.svg"></button>
+        <button class="botao" title="Ativar modo escuro" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
+        
+        <h3>ÓRBITAS RELATIVÍSTICAS DE CORPOS CELESTES</h3>
+
+        <div class="modal" id="modal" onclick="hide('modal','window')"></div>
+        <div class="window" id="window">
+            <div class="titlebar" style="height: 40px;">
+                <button class="close" onclick="hide('modal','window')"><img class="x" src="img/close.svg"></button>
+            </div>
+                
+            <div class="conteudo" id="conteudo">
+                <h4>E se, de repente, o Sol se transformasse em um buraco negro?</h4>
+                <p>Para isso, toda sua massa, de 2 $\cdot$ 10$^{30}$ kg (hoje espalhada numa esfera com cerca de  700 mil quilômetros de raio), deveria ser comprimida numa região com um raio de cerca de  3  km.</p>
+                <img src="img/orbitaCeleste.png" style="width: 40%; margin-left: 30%;">
+                <p>O simulador a seguir nos permite explorar a órbita de corpos (planetas, asteroides ou espaço-naves) que se aventurassem nas vizinhanças de um buraco negro com a mesma massa do Sol.</p>
+                <p>Nele você pode alterar (ver figura acima):</p>
+                <ul>
+                    <li><p>A posição inicial do corpo: $x_0$ (em km)</p></li>
+                    <li><p>O módulo da velocidade inicial do corpo: $v_0$</p></li>
+                </ul>
+                <p>Ex.: Com $x_0=15$km e $v_0=0.38c$, obtemos uma órbita quase circular. No simulador a seguir, você pode testar esse e outros parâmetros!</p>
+            </div>
+        </div>
+
+        <py-script src="py/Orbitas_gif.py"></py-script>
+        <article>
+            <div class="programa" id="M_Inicio">
+                <h5><a style="color:#ffdb57;">1.</a> Escolha o valor do parâmetro de impacto $d$ (em km):</h5>
+                <div class="input">
+                    <p>Escolha entre 0.01 e 15:</p>
+                    <input type="range" value="0.01" min="0.01" max="15.00" step="0.01" style="width: 100%;" oninput="rangevalue3.value=value"/>
+                    <div class="value">
+                        <p class="inicial">0.01</p>
+                        <output id="rangevalue3">0.01</output>
+                        <p class="final">15</p>
+                    </div>
+                
+                </div>
+                <button class="click" id="click2" onclick="return limpaDiv('parte2')" py-click="gerarOrbita2()">Próximo</button>
+            </div>
+        </article>
+        <article>
+            <div class="programa">
+                <h5><a style="color:#ffdb57;">2.</a> Escolha o valor da velocidade inicial (em unidades da velocidade da luz):</h5>
+                <div class="input">
+                    <p>Escolha entre 0.01 e 15:</p>
+                    <input type="range" value="0.01" min="0.01" max="15.00" step="0.01" style="width: 100%;" oninput="rangevalue3.value=value"/>
+                    <div class="value">
+                        <p class="inicial">0.01</p>
+                        <output id="rangevalue3">0.01</output>
+                        <p class="final">15</p>
+                    </div>
+                </div>
+                <button class="click" id="click2" onclick="return limpaDiv('parte2')" py-click="gerarOrbita2()">Gerar Órbita</button>
+            </div>
+        </article>
+        <article>
+            <div class="programa">
+                <div class="graf1" id="graph2"></div>
+            </div>
+        </article>   
+    </div>
+
+<!--------------------------------------------------------------------------------------------->
+   
+<div id="raios-de-luz" style="display: none">
+        <button class="botao" title="Voltar" id="voltar" onclick="show('inicio','raios-de-luz')"><img class="back" src="img/back.svg"></button>
+        <button class="botao" title="Abrir informações" id="info" onclick="openModal('modal2','window2')"><img class="question" src="img/question.svg"></button>
+        <button class="botao" title="Ativar modo escuro" id="dark" onclick="change()"><img class="lightbulb" src="img/lightbulb.svg"></button>
+
+        <div class="modal" id="modal2" onclick="hide('modal2','window2')"></div>
+            <div class="window" id="window2">
+                <div class="titlebar" style="height: 40px;">
+                    <button class="close" onclick="hide('modal2','window2')"><img class="x" src="img/close.svg"></button>
+                </div>
+                <div class="conteudo" id="conteudo2">
+                    <h4>Luz orbitando um buraco negro</h4>
+                    <p>A teoria da Relatividade Geral de Einstein prevê que a trajetória da luz deve ser defletida quando passa nas vizinhanças de um corpo massivo. O simulador a seguir nos permite explorar a órbita de raios de luz ao redor de um buraco negro com a mesma massa do Sol.</p>
+                    <img src="img/orbitaLuz.png" style="width: 40%; margin-left: 30%;">
+                    <p>Nele, você pode alterar (ver figura acima):</p>
+                    <ul>
+                        <li><p>O parâmetro de impacto (em km): $d$</p></li>
+                    </ul>
+                    <p>Ex.: Por volta de  $d=7.794$km, temos o valor crítico para o parâmetro de impacto. No simulador a seguir, você pode testar esse e outros parâmetros!</p>
+                </div>
+            </div>
+        
+        <h3>ÓRBITAS RELATIVÍSTICAS DE RAIOS DE LUZ</h3>
+        <article>
+            <div class="programa">
+                <h5><a style="color:#ffdb57;">1.</a> Escolha o valor do parâmetro de impacto $d$ (em km):</h5>
+                <div class="input">
+                    <p>Escolha entre 0.01 e 15:</p>
+                    <input type="range" value="0.01" min="0.01" max="15.00" step="0.01" style="width: 100%;" oninput="rangevalue3.value=value"/>
+                    <div class="value">
+                        <p class="inicial">0.01</p>
+                        <output id="rangevalue3">0.01</output>
+                        <p class="final">15</p>
+                    </div>
+                </div>
+                <button class="click" id="click2" onclick="return limpaDiv('parte2')" py-click="gerarOrbita2()">Gerar Órbita</button>
+            </div>
+        </article>
+        <article>
+            <div class="programa">
+                <div class="graf1" id="graph2"></div>
+            </div>
+        </article>
+    </div>
+
+    <!--------------------------------------------------------------------------------------------->
+
+    <div class="modal" id="sobre" style="display: none;" onclick="hide('sobre','window3')"></div>
+    <div class="window" id="window3" style="display: none;" >
+        <div class="titlebar" style="height: 40px;">
+            <button class="close" onclick="hide('sobre','window3')"><img class="x" src="img/close.svg"></button>
+        </div>
+        <div class="conteudo" id="conteudo3">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div> 
+    </div>
+
+    <footer>
+        <a class="foot" onclick="openModal('sobre','window3')">
+            <img class="about" src="img/info.svg">
+            <p class="foot">Sobre este site</p>
+        </a>
+    </footer>
+</body>
+
+</html>
