@@ -2,15 +2,9 @@ orbitas = false;
 
 // Função que é executada sempre que a página é aberta
 function init() {
-    localStorage.setItem("mode", "dark");
+    dark();
     document.getElementById('ico1').classList.add('select');
     document.getElementById('ico1b').classList.add('select');
-    if (localStorage.getItem("mode") == "dark") {
-        dark();
-    }
-    else {
-        localStorage.setItem("mode", "light")
-    }
 }
 
 function dark() {
