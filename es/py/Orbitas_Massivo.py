@@ -139,7 +139,7 @@ def gerarOrbitaM():
         else:
             E = -1 # Se o input não é numérico, atribui um valor menor que -1/2 a E para gerar mensagem de erro abaixo.
         
-        rst = 60 # Raio de início da órbita no caso de órbita de espalhamento.
+        rst = 60 # Raio de início da órbita no caso de órbita de espalhamento ou captura.
         ust = 1/rst
         Emin = v(1/2,l) # Valor mínimo permitido para o parâmetro de energia, igual a -0.5.
         
@@ -186,10 +186,9 @@ def gerarOrbitaM():
             elif 0 <= E < vmax:
                 u1 = ust
                 u2 = tps[0] * (1 - eps)
-                rlim = 1 / u1 - 5 
+                rlim = 1 / u1 - 7
                 norbit = 1
-                #print("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento será mostrada.")
-                display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento será mostrada.", target="infos", append=True)
+                display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento está sendo mostrada.", target="infos", append=True)
             elif E >=0 and E > vmax:
                 u1 = ust
                 u2 = 0.5
