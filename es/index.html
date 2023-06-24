@@ -186,7 +186,7 @@
                     $$
                     Por outro lado, classicamente a luz não seria afetada pela gravitação.
                         
-                    A <b>Relatividade Geral</b> prevê que, nas vizinhanças de um corpo massivo, a trajetória de um raio de luz não seja retilínea. O movimento, que está restrito a um plano, pode ser caracterizado por coordenadas polares $(r(\lambda), \theta(\lambda))$, que obedecem
+                    Agora, a <b>Relatividade Geral</b> prevê que, nas vizinhanças de um corpo massivo, a trajetória de um raio de luz não será retilínea. O movimento, que está restrito a um plano, pode ser caracterizado por coordenadas polares $(r(\lambda), \theta(\lambda))$, que obedecem
                     $$
                     \frac{d \theta(\lambda)}{d \lambda}=\frac{L}{r(t)^2}
                     $$
@@ -200,17 +200,28 @@
                     $$
                     Aqui, $r_s=2 G M / c^2$ depende da massa do corpo central. 
 
-                    Comparando com o caso clássico, vemos que o que cumpre o papel de parâmetro de “energia” é o fator $1/d^2$, onde $d$ é o <b>parâmetro de impacto</b> do raio de luz, que pode ser obtido a partir da sua energia $E$ e momento angular $L$ como $\mathrm{d}=\mathrm{c}|\mathrm{L} / \mathrm{E}|$.
+                    Comparando com o caso clássico, vemos que o que cumpre o papel de parâmetro de “energia” é o fator $1/d^2$, onde $d$ é o <b>parâmetro de impacto</b> do raio de luz, que pode ser obtido a partir da sua energia $E$ e momento angular $L$ como $d=c|L/E|$.
 
                     Para entender o significado do parâmetro de impacto, considere um raio de luz que vem de muito longe, se movendo paralelamente ao eixo-x: o parâmetro de impacto $d$ é justamente a distância ao eixo-x, como mostra a figura abaixo.
                     </p>
                     <img src="img/parametro.png" class="lightbulb" id="parametro">
-                    <p class="green-text">Tanto no caso clássico quando no relativístico, muitas características qualitativas do movimento podem ser entendidas simplesmente da análise do gráfico de energia potencial correspondente. <i>Neste simulador, você pode comparar suas previsões qualitativas com o formato da órbita obtido da integração numérica das equações de movimento!</i></p>
-                <p>Para mais informações, veja: <i>[link para artigo]</i></p>
+                    <p class="green-text">Tanto no caso clássico quando no relativístico, muitas características qualitativas do movimento podem ser entendidas simplesmente da análise do gráfico de energia potencial correspondente. <i>Neste simulador, você pode comparar suas previsões qualitativas com base na análise do potencial efetivo com o formato exato das órbitas, obtido da integração numérica das equações de movimento!As leis <b>Newtonianas</b> da mecânica e da gravitação implicam que uma partícula de massa $m$, sujeita a um campo gravitacional gerado por um corpo de massa $M \gg m$, descreve um movimento restrito a um plano e caracterizado por coordenadas polares $(r(t),θ(t))$, que satisfazem
+                    $$
+                    \frac{d\theta(t)}{dt} = \frac{L}{mr(t)^2}
+                    $$
+                e
+                    $$
+                    \frac{m}{2}\left(\frac{d r(t)}{d t}\right)^2+U_{\text {efetiva }}(r)=E,
+                    $$
+                onde $L$ e $E$ (respectivamente o módulo do momento angular e a energia do sistema) são quantidades conservadas, e a energia potencial efetiva é dada por 
+                    $$
+                    U_{e f e t i v a}=-\frac{G M m}{r(t)}+\frac{L^2}{2 m r(t)^2}.
+                    $$</i></p>
+                <!-- <p>Para mais informações, veja: <i>[link para artigo]</i></p> -->
                 </div>    
                 <div class="instrucoes" id="instrucoes2" style="display: none;">
                     <h4>Funcionamento do programa</h4>
-                    <p>No simulador a seguir, você deve inserir o valor do <b>parâmetro de impacto</b>, em unidades de $r_g$. Note que o valor do parâmetro de impacto <b>crítico</b> (tal que $1/d_{cr}^2 = V_{efetivo, max}$) é ${d}_{cr} ≈ 2.5981 {r}_{g}$. O programa retornará um gráfico correspondente à trajetória da partícula com esse parâmetro de impacto. Você pode tanto explorar uma faixa definida de valores de $d$ quanto inserir o valor desejado diretamente.</p>
+                    <p>Neste simulador, você deve inserir o valor do <b>parâmetro de energia</b>, $k \equiv 1/d^2$ (com $d$ em unidades de $r_s/2$). O programa retornará um gráfico correspondente à trajetória da partícula com esse parâmetro de impacto. </p>
                 </div> 
             </div>
         
