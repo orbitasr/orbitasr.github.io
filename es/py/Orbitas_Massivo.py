@@ -186,7 +186,7 @@ def gerarOrbitaM():
             elif 0 <= E < vmax:
                 u1 = ust
                 u2 = tps[0] * (1 - eps)
-                rlim = 1 / u1 - 7
+                rlim = 1 / u1 - 10
                 norbit = 1
                 display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento está sendo mostrada.", target="infos", append=True)
             elif E >=0 and E > vmax:
