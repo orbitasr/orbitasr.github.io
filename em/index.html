@@ -70,7 +70,7 @@
                 <p> Para gerar uma órbita, você deve fornecer (ver figura abaixo):</p>
                 <ul>
                     <li><p>A posição inicial do corpo: $x_0$ (em km).</p></li>
-                    <li><p>O módulo da velocidade inicial do corpo (como uma fração da velocidade da luz): $v_0$</p></li>
+                    <li><p>O módulo da velocidade inicial do corpo (como uma fração da velocidade da luz, $c$): $v_0$</p></li>
                 </ul>
                 <img src="img/orbitaCeleste.png" style="width: 40%; margin-left: 30%;">
                 <p>Ex.: Com $x_0=15$km e $v_0=0.38c$, obtemos uma órbita quase circular. No simulador a seguir, você pode testar esse e outros parâmetros!</p>
@@ -80,7 +80,7 @@
         <py-script src="py/Orbitas_gif.py"></py-script>
         <article>
             <div class="programa" id="M_Inicio">
-                <h5><a style="color:#ffdb57;">1.</a> Escolha o valor da distância ($x_0$, em km) ao buraco negro:</h5>
+                <h5><a style="color:#ffdb57;">1.</a> Escolha o valor da distância ao buraco negro ($x_0$, em km):</h5>
                 <div class="input">
                     <p>Escolha entre 2.01 e 15:</p>
                     <input type="range" value="2.01" min="2.01" max="15.00" step="0.01" style="width: 100%;" oninput="rangevalue.value=value"/>
@@ -96,7 +96,7 @@
         </article>
         <article>
             <div class="programa">
-                <h5><a style="color:#ffdb57;">2.</a> Escolha o valor do módulo da velocidade inicial $v_0$ (em unidades da velocidade da luz):</h5>
+                <h5><a style="color:#ffdb57;">2.</a> Escolha o valor do módulo da velocidade inicial $v_0$ (em unidade da velocidade da luz):</h5>
                 <div class="input">
                     <p>Escolha entre 0 e 1:</p>
                     <input type="range" value="0.0" min="0.0" max="1.0" step="0.01" style="width: 100%;" oninput="rangevalue2.value=value"/>
@@ -129,14 +129,14 @@
                     <button class="close" onclick="hide('modal2','window2')"><img class="x" src="img/close.svg"></button>
                 </div>
                 <div class="conteudo" id="conteudo2">
-                    <h4>Luz orbitando um buraco negro</h4>
-                    <p>A teoria da Relatividade Geral de Einstein prevê que a trajetória da luz deve ser defletida quando passa nas vizinhanças de um corpo massivo. O simulador a seguir nos permite explorar a órbita de raios de luz ao redor de um buraco negro com a mesma massa do Sol.</p>
+                    <h4>Raios de luz nas vizinhanças de um buraco negro</h4>
+                    <p>A <b>teoria da Relatividade Geral</b> de Einstein prevê que a trajetória da luz deve ser defletida quando passa nas vizinhanças de um corpo massivo. <b> Este simulador permite explorar a órbita de raios de luz ao redor de um buraco negro com a mesma massa do Sol</b>.</p>
                     <img src="img/orbitaLuz.png" style="width: 40%; margin-left: 30%;">
-                    <p>Nele, você pode alterar (ver figura acima):</p>
+                    <p>Para isso, você deve fornecer (ver figura acima):</p>
                     <ul>
-                        <li><p>O parâmetro de impacto (em km): $d$</p></li>
+                        <li><p>O parâmetro de impacto: $d$ (em km)</p></li>
                     </ul>
-                    <p>Ex.: Por volta de  $d=7.794$km, temos o valor crítico para o parâmetro de impacto. No simulador a seguir, você pode testar esse e outros parâmetros!</p>
+                    <p>Dica: Por volta de  $d=7.794$ km, temos o valor crítico para o parâmetro de impacto. No simulador a seguir, você pode testar esse e outros parâmetros!</p>
                 </div>
             </div>
         
