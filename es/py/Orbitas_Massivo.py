@@ -26,15 +26,7 @@ def isNumeric(input): # Função genérica para checar se a natureza do input é
     except ValueError:
         return False
 
-# Input: trajetória tipo-tempo ('M') ou tipo-luz ('L')
-# tipo_orbita = input("Escolha 'M' para órbitas de corpos massivos e 'L' para órbitas de raios de luz: ")
-
-#if tipo_orbita == "M":
 def gerarPotencial():
-    def theta(w, l, E):
-        theta = (l / (2 ** (1 / 2))) / ((E - v(w, l)) ** (1 / 2))
-        return theta
-
     def v(u, l):
         v = -u + (l ** 2) * (u ** 2) / 2 - (l ** 2) * (u ** 3)
         return v
@@ -68,7 +60,7 @@ def gerarPotencial():
         vmax = v(umax, l)
         #print("O mínimo e o máximo da energia potencial efetiva são", vmin, "e", vmax,
         #         " (ver pontos no gráfico).")
-        t = 'O mínimo e o máximo da energia potencial efetiva são ' + str(vmin) + ' e ' + str(vmax) + ' (ver pontos no gráfico)'
+        t = 'O mínimo e o máximo da energia potencial efetiva são ' + str(round(vmin,8)+eps) + ' e ' + str(round(vmax,8)) + ' (ver pontos no gráfico).'
         display(t, target="valores", append=True)
         
         vlim = vmax
@@ -126,12 +118,7 @@ def gerarPotencial():
         #plt.show()
         display(plt, target="graph", append=True)
         
-    #else:
-        #print("ATENÇÃO: O momento angular deve ser um número positivo ou nulo.")
-
-        
-
-    #if l >=0: # Só seguimos se l>0.
+       
 def gerarOrbitaM(): 
         def theta(w, l, E):
             theta = (l / (2 ** (1 / 2))) / ((E - v(w, l)) ** (1 / 2))
@@ -199,32 +186,31 @@ def gerarOrbitaM():
             elif 0 <= E < vmax:
                 u1 = ust
                 u2 = tps[0] * (1 - eps)
-                rlim = 1 / u1 + 2 
+                rlim = 1 / u1 - 5 
                 norbit = 1
                 #print("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento será mostrada.")
                 display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento será mostrada.", target="infos", append=True)
             elif E >=0 and E > vmax:
                 u1 = ust
                 u2 = 0.5
-                rlim = 1 / u1 + 2
+                rlim = 1 / u1 - 5
                 norbit = 0.5
                 
         else: # l < sqrt(12)
             if E >= 0:
                 u1 = ust
                 u2 = 0.5
-                rlim = 1 / u1 + 2
+                rlim = 1 / u1 - 5
                 norbit = 0.5
             elif Emin < E < 0:
                 u1 = tps[0] * (1 + eps)
                 u2 = 0.5
-                rlim = 1 / u1 - 1
+                rlim = 1 / u1 + 1
                 norbit = 0.5
 
         # Calcula a órbita se E>Emin.
         if E <= Emin:
-            #print("ATENÇÃO: O parâmetro de energia deve ser maior que E_min = -0.5 para garantir que a órbita tenha início fora do horizonte de eventos.")
-            display("ATENÇÃO: O parâmetro de energia deve ser maior que E_min = -0.5 para garantir que a órbita tenha início fora do horizonte de eventos.", target="infos", append=True)
+            display("ATENÇÃO: O parâmetro de energia deve ser maior que Emin = -0.5 para garantir que a órbita tenha início fora do horizonte de eventos.", target="infos", append=True)
             
         else:          
             if not circular:
