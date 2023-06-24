@@ -5,12 +5,6 @@ function init() {
     localStorage.setItem("mode", "dark");
     document.getElementById('ico1').classList.add('select');
     document.getElementById('ico1b').classList.add('select');
-    if (localStorage.getItem("mode") == "dark") {
-        dark();
-    }
-    else {
-        localStorage.setItem("mode", "light")
-    }
 }
 
 function dark() {
