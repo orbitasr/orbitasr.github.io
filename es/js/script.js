@@ -137,6 +137,7 @@ function limpaDiv3() {
     graph.firstChild.remove();
     var info3 = document.getElementById("info3");
     info3.firstChild.remove();
+    info3.firstChild.remove();
 }
 
 function reiniciar() {
