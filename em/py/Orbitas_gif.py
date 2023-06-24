@@ -6,6 +6,7 @@ import math
 #from PIL import Image
 import matplotlib.animation as animation
 from matplotlib.patches import Circle
+from JSAnimation import IPython_display
 
 #import warnings
 #warnings.filterwarnings('ignore')
