@@ -292,7 +292,7 @@ def gerarOrbitaM():
             ani1 = animation.HTMLWriter(fps=30, codec=None, bitrate=None, extra_args=None, metadata=None, embed_frames=False, default_mode='loop', embed_limit=None)
             
             #plt.show()
-            display(plt, target="graph", append=True)
+            display(ani1, target="graph", append=True)
         
         else:
             print("ATENÇÃO: Valor inválido para a velocidade inicial, que deve ser um número menor que 1.") 
