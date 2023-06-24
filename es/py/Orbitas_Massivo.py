@@ -4,7 +4,6 @@ from scipy.integrate import quad
 import math
 from matplotlib.patches import Circle
 
-
 def reiniciar():
     global orbitas
     orbitas = False
@@ -69,7 +68,7 @@ def gerarPotencial():
         vmax = v(umax, l)
         #print("O mínimo e o máximo da energia potencial efetiva são", vmin, "e", vmax,
         #         " (ver pontos no gráfico).")
-        t = 'O mínimo e o máximo da energia potencial efetiva são ' + str(vmin)) + ' e ' + str(vmax) + ' (ver pontos no gráfico)'
+        t = 'O mínimo e o máximo da energia potencial efetiva são ' + str(vmin) + ' e ' + str(vmax) + ' (ver pontos no gráfico)'
         display(t, target="valores", append=True)
         
         vlim = vmax
