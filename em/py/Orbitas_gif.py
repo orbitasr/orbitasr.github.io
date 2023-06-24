@@ -293,7 +293,7 @@ def gerarOrbitaM():
             HTML(ani1.to_jshtml())
             
             #plt.show()
-            display(ani1, target="graph", append=True)
+            display(ani1, target="graph", append=True, _repr_json_)
         
         else:
             print("ATENÇÃO: Valor inválido para a velocidade inicial, que deve ser um número menor que 1.") 
