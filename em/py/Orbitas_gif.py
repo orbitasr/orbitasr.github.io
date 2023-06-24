@@ -290,6 +290,7 @@ def gerarOrbitaM():
             
             #ani1 = animation.FuncAnimation(fig, animate, frames=range(0, len(x), skipframes), interval=30, blit=True, repeat=False)
             ani1 = animation.HTMLWriter(fps=30, codec=None, bitrate=None, extra_args=None, metadata=None, embed_frames=False, default_mode='loop', embed_limit=None)
+            HTML(ani1.to_jshtml())
             
             #plt.show()
             display(ani1, target="graph", append=True)
