@@ -10,7 +10,5 @@
 
 ## Falta fazer (Alessandro):
 
-- caixa aparecendo
 - mudar nome do site
-- no caso de orbitas ligdas, não exibir grafico antes
 - resolver código GIFs

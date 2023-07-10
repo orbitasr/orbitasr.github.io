@@ -1,5 +1,6 @@
 orbitas = false;
 mensagem = false;
+msg = false;
 
 // Função que é executada sempre que a página é aberta
 function init() {
@@ -122,6 +123,17 @@ function exibeMensagemM() {
 
 setInterval(exibeMensagemM,100);
 
+function exibeMensagemL() {
+    msg = pyscript.interpreter.globals.get('msg');
+    if (msg) {
+        document.getElementById('info3').style.display='block';
+    } else {
+        document.getElementById('info3').style.display='none';
+    }
+}
+
+setInterval(exibeMensagemL,100);
+
 function limpaDiv(show){
     document.getElementById(show).style.display='block';
     pot = document.getElementById("pot");
@@ -136,8 +148,11 @@ function limpaDiv(show){
 }
 
 function limpaDiv2() {
-    var GrafM = document.getElementById("GrafM");
-    GrafM.style.display="block";
+    firtRun = pyscript.interpreter.globals.get('firstRun');
+    if (firtRun == false) {
+        var GrafM = document.getElementById("GrafM");
+        GrafM.style.display="block";
+    }
     var graph = document.getElementById("graph2");
     graph.firstChild.remove();
     var info = document.getElementById("infos");
@@ -153,6 +168,7 @@ function limpaDiv3() {
     var info3 = document.getElementById("info3");
     info3.firstChild.remove();
     info3.firstChild.remove();
+    msg = false;
 }
 
 function reiniciar() {
@@ -164,6 +180,6 @@ function reiniciar() {
     document.getElementById("GrafM").style.display="none";
     document.getElementById("rangevalue").value=0.0;
     document.getElementById("number").value=0.0;
-    document.getElementById("rangevalue2").value=1;
+    document.getElementById("rangevalue2").value=0;
 
 }

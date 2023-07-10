@@ -4,6 +4,9 @@ from scipy.integrate import quad
 import math
 from matplotlib.patches import Circle
 
+global firstRun
+firstRun = True
+
 def reiniciar():
     global orbitas
     orbitas = False
@@ -172,6 +175,11 @@ def gerarOrbitaM():
                 #Faz aparecer input no site:
                 global orbitas
                 orbitas = True
+
+                global firstRun
+                if firstRun:
+                    firstRun = False
+                    return
                 #norbitinput = input("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita ligada será mostrada. Escolha o número de voltas que deseja traçar: ")
                 from js import o
                 norbitinput = o

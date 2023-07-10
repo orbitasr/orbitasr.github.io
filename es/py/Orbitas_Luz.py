@@ -24,6 +24,8 @@ def isNumeric(input): # Função genérica para checar se a natureza do input é
 
 #elif tipo_orbita == "L":
 def gerarOrbitaL():
+    global msg
+    msg = False
     # Definições básicas
     r_escala = 1/2 # Todas as expressões estão em unidades de M, mas o input é em unidades do raio gravitacional (2*M).
     eps = 1e-8
@@ -104,6 +106,7 @@ def gerarOrbitaL():
             rlim = 1 / u1 - 20
             norbit = 1
             display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento será mostrada.", target="info3", append=True)
+            msg = True
         else:
             u1 = ust
             u2 = 0.5 # * (1 - eps)
@@ -181,6 +184,7 @@ def gerarOrbitaL():
         #print("ATENÇÃO: O parâmetro de impacto deve ser um número positivo.")
         #print("ATENÇÃO: O parâmetro de energia deve ser um número positivo (>1e-8) para garantir que a órbita tenha início fora do horizonte de eventos.")
         display("ATENÇÃO: O parâmetro de energia deve ser um número positivo (>1e-8) para garantir que a órbita tenha início fora do horizonte de eventos.", target="info3", append=True)
+        msg = True
 
 #else:
 #    print("ATENÇÃO: Apenas 'M' e 'L' podem ser usados para identificar os tipos de órbitas.")
