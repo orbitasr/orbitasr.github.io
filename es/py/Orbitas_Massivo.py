@@ -128,6 +128,9 @@ def gerarOrbitaM():
             v = -u + (l ** 2) * (u ** 2) / 2 - (l ** 2) * (u ** 3)
             return v
 
+        global mensagem
+        mensagem = False
+        
         eixos, borda = mudarCor()
 
         #Input: valor do parâmetro de energia (E>-0.5)
@@ -177,6 +180,7 @@ def gerarOrbitaM():
                 else:
                     #print("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.")
                     display("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.", target="infos", append=True)
+                    mensagem = True
                     norbit = 5
             elif (E < 0 and E > vmax) or E < vmin: #Órbita de captura começando do ponto de retorno.
                 u1 = tps[0] * (1 + eps)
@@ -189,6 +193,7 @@ def gerarOrbitaM():
                 rlim = 1 / u1 - 10
                 norbit = 1
                 display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento está sendo mostrada.", target="infos", append=True)
+                mensagem = True
             elif E >=0 and E > vmax:
                 u1 = ust
                 u2 = 0.5
@@ -210,6 +215,7 @@ def gerarOrbitaM():
         # Calcula a órbita se E>Emin.
         if E <= Emin:
             display("ATENÇÃO: O parâmetro de energia deve ser maior que Emin = -0.5 para garantir que a órbita tenha início fora do horizonte de eventos.", target="infos", append=True)
+            mensagem = True
             
         else:          
             if not circular:
@@ -218,7 +224,7 @@ def gerarOrbitaM():
                 if 1/u1 > 1000:
                     #print("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.")
                     display("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.", target="infos", append=True)
-                
+                    mensagem = True
                 uc1 = np.linspace(u1, 1.1*u1, 300)
                 uc2 = np.linspace(1.11*u1, 0.9*u2, 1000)
                 uc3 = np.linspace(0.91*u2, u2, 300)

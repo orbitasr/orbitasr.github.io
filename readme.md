@@ -10,10 +10,7 @@
 
 ## Falta fazer (Alessandro):
 
-
-- dark-mode padrão
 - caixa aparecendo
 - mudar nome do site
-- luz texto a mais na parte verde!
 - no caso de orbitas ligdas, não exibir grafico antes
 - resolver código GIFs

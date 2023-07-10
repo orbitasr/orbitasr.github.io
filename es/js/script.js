@@ -1,12 +1,10 @@
 orbitas = false;
+mensagem = false;
 
 // Função que é executada sempre que a página é aberta
 function init() {
     dark();
-    document.getElementById('ico1').classList.add('dark');
-    document.getElementById('ico1b').classList.add('dark');
-    document.getElementById('ico2').classList.add('dark');
-    document.getElementById('ico2b').classList.add('dark');
+    localStorage.setItem("mode", "dark")
     document.getElementById('ico1').classList.add('select');
     document.getElementById('ico1b').classList.add('select');
 
@@ -28,6 +26,10 @@ function dark() {
     var element = document.body;
     element.classList.add("dark-mode");
     document.getElementById("potencialluz").src="img/potencialluzDark.png";
+    document.getElementById('ico1').classList.add('dark');
+    document.getElementById('ico1b').classList.add('dark');
+    document.getElementById('ico2').classList.add('dark');
+    document.getElementById('ico2b').classList.add('dark');
 }
 
 function light(){
@@ -46,10 +48,13 @@ function light(){
     var element = document.body;
     element.classList.remove("dark-mode");
     document.getElementById("potencialluz").src="img/potencialluzLight.png";
+    document.getElementById('ico1').classList.remove('dark');
+    document.getElementById('ico1b').classList.remove('dark');
+    document.getElementById('ico2').classList.remove('dark');
+    document.getElementById('ico2b').classList.remove('dark');
 }
 
 function change() {
-    var element = document.body;
     if (localStorage.getItem("mode") == "dark") {
         localStorage.setItem("mode", "light");
         light();
@@ -106,6 +111,17 @@ function mostraPasso3() {
 
 setInterval(mostraPasso3,100);
 
+function exibeMensagemM() {
+    mensagem = pyscript.interpreter.globals.get('mensagem');
+    if (mensagem) {
+        document.getElementById('infos').style.display='block';
+    } else {
+        document.getElementById('infos').style.display='none';
+    }
+}
+
+setInterval(exibeMensagemM,100);
+
 function limpaDiv(show){
     document.getElementById(show).style.display='block';
     pot = document.getElementById("pot");
@@ -140,6 +156,7 @@ function limpaDiv3() {
 }
 
 function reiniciar() {
+    mensagem = false;
     orbitas = false;
     document.getElementById("pot").style.display="none";
     document.getElementById("parte2").style.display="none";
@@ -148,4 +165,5 @@ function reiniciar() {
     document.getElementById("rangevalue").value=0.0;
     document.getElementById("number").value=0.0;
     document.getElementById("rangevalue2").value=1;
+
 }
