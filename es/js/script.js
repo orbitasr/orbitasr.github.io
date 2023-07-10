@@ -3,8 +3,13 @@ orbitas = false;
 // Função que é executada sempre que a página é aberta
 function init() {
     dark();
+    document.getElementById('ico1').classList.add('dark');
+    document.getElementById('ico1b').classList.add('dark');
+    document.getElementById('ico2').classList.add('dark');
+    document.getElementById('ico2b').classList.add('dark');
     document.getElementById('ico1').classList.add('select');
     document.getElementById('ico1b').classList.add('select');
+
 }
 
 function dark() {
@@ -79,7 +84,7 @@ function nav(a,b,c,d,e,f){
         document.getElementById(d).style.color='#ffffff';
     }
     document.getElementById(e).classList.add('select');
-    document.getElementById(f).classList.remove('select');  
+    document.getElementById(f).classList.remove('select');
 }
 
 function getValues() {

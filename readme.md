@@ -10,7 +10,7 @@
 
 ## Falta fazer (Alessandro):
 
-- sobre
+
 - dark-mode padrão
 - caixa aparecendo
 - mudar nome do site

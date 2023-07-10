@@ -144,7 +144,11 @@ strong {
     right: 0.5%;
 }
 
-.dark-mode .lightbulb, .dark-mode .question, .dark-mode .back, .dark-mode .x, .dark-mode .ico {
+.dark-mode .lightbulb, .dark-mode .question, .dark-mode .back, .dark-mode .x {
+    filter: invert(99%) sepia(0%) saturate(234%) hue-rotate(31deg) brightness(115%) contrast(78%);
+}
+
+.dark {
     filter: invert(99%) sepia(0%) saturate(234%) hue-rotate(31deg) brightness(115%) contrast(78%);
 }
 
