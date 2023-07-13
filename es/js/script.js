@@ -31,6 +31,7 @@ function dark() {
     document.getElementById('ico1b').classList.add('dark');
     document.getElementById('ico2').classList.add('dark');
     document.getElementById('ico2b').classList.add('dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#0E1118');
 }
 
 function light(){
@@ -53,6 +54,7 @@ function light(){
     document.getElementById('ico1b').classList.remove('dark');
     document.getElementById('ico2').classList.remove('dark');
     document.getElementById('ico2b').classList.remove('dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#ededed');
 }
 
 function change() {

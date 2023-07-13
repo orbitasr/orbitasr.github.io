@@ -19,6 +19,7 @@ function dark() {
     r.style.setProperty('--bordax', 'e3e3e3');
     var element = document.body;
     element.classList.add("dark-mode");
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#0E1118');
 }
 
 function light(){
@@ -36,6 +37,7 @@ function light(){
     r.style.setProperty('--bordax', '#f6f6f6');
     var element = document.body;
     element.classList.remove("dark-mode");
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#ededed');
 }
 
 function change() {
