@@ -10,6 +10,8 @@ firstRun = True
 def reiniciar():
     global orbitas
     orbitas = False
+    global firstRun
+    firstRun = True
 
 #Muda cor do gráfico de acordo com tema do site ~ A
 def mudarCor():
@@ -175,11 +177,17 @@ def gerarOrbitaM():
                 #Faz aparecer input no site:
                 global orbitas
                 orbitas = True
+                
+                global ocultar
+                ocultar = True
 
                 global firstRun
                 if firstRun:
                     firstRun = False
                     return
+
+                ocultar = False
+
                 #norbitinput = input("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita ligada será mostrada. Escolha o número de voltas que deseja traçar: ")
                 from js import o
                 norbitinput = o

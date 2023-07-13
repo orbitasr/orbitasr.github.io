@@ -111,6 +111,10 @@ a, a:visited {
     color: var(--texto);
 }
 
+ul {
+    color: var(--texto);
+}
+
 strong {
     color: var(--destaque);
     font-weight: normal;

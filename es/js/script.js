@@ -1,7 +1,6 @@
 orbitas = false;
 mensagem = false;
 msg = false;
-vaiterpasso3 = false;
 
 // Função que é executada sempre que a página é aberta
 function init() {
@@ -106,9 +105,12 @@ setInterval(getValues,100);
 
 function mostraPasso3() {
     orbitas = pyscript.interpreter.globals.get('orbitas');
+    ocultar = pyscript.interpreter.globals.get('ocultar');
     if (orbitas) {
         document.getElementById("parte3").style.display='block';
-        vaiterpasso3 = true;
+        if (ocultar) {
+            document.getElementById("GrafM").style.display='none';
+        }
     }
 }
 
@@ -152,9 +154,6 @@ function limpaDiv(show){
 function limpaDiv2() {
     var GrafM = document.getElementById("GrafM");
     GrafM.style.display="block";
-    if (vaiterpasso3) {
-       GrafM.style.display="none";
-    }
     var graph = document.getElementById("graph2");
     graph.firstChild.remove();
     var info = document.getElementById("infos");
@@ -181,6 +180,6 @@ function reiniciar() {
     document.getElementById("GrafM").style.display="none";
     document.getElementById("rangevalue").value=0.0;
     document.getElementById("number").value=0.0;
-    document.getElementById("rangevalue2").value=0;
+    document.getElementById("rangevalue2").value=1;
 
 }
