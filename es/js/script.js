@@ -12,6 +12,7 @@ function init() {
 }
 
 function dark() {
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#0E1118');
     var r = document.querySelector(':root');
     r.style.setProperty('--texto', '#ffffff');
     r.style.setProperty('--fundo', ' #0E1118');
@@ -31,10 +32,10 @@ function dark() {
     document.getElementById('ico1b').classList.add('dark');
     document.getElementById('ico2').classList.add('dark');
     document.getElementById('ico2b').classList.add('dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#0E1118');
 }
 
 function light(){
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#ededed');
     var r = document.querySelector(':root');
     r.style.setProperty('--texto', '#000000');
     r.style.setProperty('--fundo', '#ededed');
@@ -54,7 +55,6 @@ function light(){
     document.getElementById('ico1b').classList.remove('dark');
     document.getElementById('ico2').classList.remove('dark');
     document.getElementById('ico2b').classList.remove('dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute("content", '#ededed');
 }
 
 function change() {
