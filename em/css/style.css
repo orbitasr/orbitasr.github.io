@@ -1,4 +1,4 @@
-/*Gerais*/
+/*Gervis*/
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
@@ -80,15 +80,6 @@ h5 {
     font-size: xx-large;
 }
 
-h6 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: x-large;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 2%;
-    margin-bottom: 1%;
-}
-
 p {
     text-align: justify;
     color: var(--texto);
@@ -111,7 +102,7 @@ a, a:visited {
     color: var(--texto);
 }
 
-ul {
+li {
     color: var(--texto);
 }
 
@@ -153,7 +144,11 @@ strong {
     right: 0.5%;
 }
 
-.dark-mode .lightbulb, .dark-mode .question, .dark-mode .back, .dark-mode .x, .dark-mode .ico {
+.dark-mode .lightbulb, .dark-mode .question, .dark-mode .back, .dark-mode .x {
+    filter: invert(99%) sepia(0%) saturate(234%) hue-rotate(31deg) brightness(115%) contrast(78%);
+}
+
+.dark {
     filter: invert(99%) sepia(0%) saturate(234%) hue-rotate(31deg) brightness(115%) contrast(78%);
 }
 

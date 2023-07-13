@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import quad, solve_ivp
 import math
 #from PIL import Image
-import matplotlib.animation as animation
+#import matplotlib.animation as animation
 from matplotlib.patches import Circle
 
 #import warnings
@@ -25,6 +25,17 @@ def closest(lst, value): # Encontra o valor mais próximo a "value" na lista "ls
     lst = np.asarray(lst)
     idx = (np.abs(lst - value)).argmin()
     return idx, lst[idx]
+
+#Muda cor do gráfico de acordo com tema do site ~ A
+def mudarCor():
+    from js import mode
+    if mode == 'light':
+        eixos = '#5e6469'
+        borda = '#f7f7f7'
+    else:
+        eixos = 'white'
+        borda = '#181F2F'
+    return eixos, borda
 
 # Definições básicas
 rg = 2.953 # Raio de Schwarzachild para o Sol (2*G*M_sun/c^2), em km. Pode ser alterado caso se queira mudar a massa do buraco negro.
@@ -53,23 +64,25 @@ def gerarOrbitaM():
         tau_integrand = w ** (-2) * (2.0 * (E - v(w, l))) ** (-1 / 2)
         return tau_integrand
     
+    eixos, borda = mudarCor()
+    
     # Input: posição inicial
-    #x0input = input("Escolha o valor da posição inicial (em km): ")
     from js import x
     x0input = x
+    #x0input = input("Escolha o valor da posição inicial (em km): ")
     if isNumeric(x0input):
         x0 = float(x0input)
     else:
         x0 = 0 # Se o input não é numérico, atribui um valor nulo para gerar mensagem de erro abaixo.
 
     if x0 <= rg:
-        display("ATENÇÃO: Escolha um valor da posição inicial maior que 3 km, caso contrário, a trajetória já começa dentro do buraco negro.", target="graph")    
+        display("ATENÇÃO: Escolha um valor da posição inicial maior que 3 km, caso contrário, a trajetória já começa dentro do buraco negro.", target="infos", append=True)    
     else:
         # Input: módulo da velocidade inicial
-        #v0input = input("Escolha o valor da velocidade inicial (em unidades da velocidade da luz): ")
         from js import v0js
         v0input = v0js
-
+        #v0input = input("Escolha o valor da velocidade inicial (em unidades da velocidade da luz): ")
+ 
         if isNumeric(v0input) and eval(v0input) < 1:
             v0 = abs(float(v0input)) #Força um valor positivo.
             
@@ -79,8 +92,9 @@ def gerarOrbitaM():
             l = rst * v0 # Momento angular por unidade de massa, adimensional.
             E = v(ust, l) + eps  # Hipótese: dr/dt = 0 inicialmente.
             
-            if test_mode == True:      
-                #display("Energia: ",E,". Momento angular: ", l)
+            if test_mode == True:
+                t = "Energia: " + E + ". Momento angular: " + l + "."
+                display(t, target="infos", append=True)
                 r = np.arange(2, 10, 1 / 10000)
                 u = 1 / r
                 fig1 = plt.figure()
@@ -91,18 +105,18 @@ def gerarOrbitaM():
                 plt.xlabel("r [km]")
                 plt.axis([0, r_escala * 10, -0.5,  1.2*max(v(u, l))])
                 ax = plt.gca()
-                ax.spines['bottom'].set_color('white')
-                ax.tick_params(axis='x', colors='white')
-                ax.tick_params(axis='y', colors='white')
-                ax.spines['top'].set_color('white')
-                ax.spines['right'].set_color('white')
-                ax.spines['left'].set_color('white')
-                ax.xaxis.label.set_color('white')
-                ax.yaxis.label.set_color('white')
-                fig1.patch.set_facecolor('#0E1117')
+                ax.spines['bottom'].set_color(eixos)
+                ax.tick_params(axis='x', colors=eixos)
+                ax.tick_params(axis='y', colors=eixos)
+                ax.spines['top'].set_color(eixos)
+                ax.spines['right'].set_color(eixos)
+                ax.spines['left'].set_color(eixos)
+                ax.xaxis.label.set_color(eixos)
+                ax.yaxis.label.set_color(eixos)
+                fig1.patch.set_facecolor(borda)
                 ax.set_facecolor("black")
                 #plt.show()
-                display(plt, target="graph")
+                display(plt, target="graph", append=True)
                 
             # Calcula os pontos de retorno.
             if l == 0:
@@ -119,17 +133,17 @@ def gerarOrbitaM():
                 ist = closest(tps, ust)[0]
                 if E >= 0:
                     if ist == 0:
-                        display("Para essa escolha de parâmetros, a partícula escapa do buraco negro."), target="graph" # Órbita de espalhamento
+                        display("Para essa escolha de parâmetros, a partícula escapa do buraco negro.", target="infos", append=True) # Órbita de espalhamento
                         u1 = ust * (1 - eps)
                         u2 = ust / 10
                         norbit = 0.5
                     elif ist == 1:
-                        display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="graph") # Órbita de captura
+                        display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                         u1 = ust * (1 + eps)
                         u2 = 0.55
                         norbit = 0.5
                     else:
-                        display("ERRO 1", target="graph")
+                        display("ERRO 1", target="infos", append=True)
                 else: # E < 0
                     if len(tps) == 3:
                         if ist == 0:
@@ -139,30 +153,30 @@ def gerarOrbitaM():
                             u1 = ust * (1 - eps)
                             u2 = tps[0] * (1 + eps)
                         elif ist == 2:
-                            display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="graph") # Órbita de captura
+                            display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                             u1 = ust * (1 + eps)
                             u2 = 0.55
                             norbit = 0.5
                         
                         #INPUT: Número de voltas para órbita ligada
                         if ist == 0 or ist == 1:
-                            norbitinput = display("Para essa escolha de parâmetros, a partícula orbita o buraco negro. Escolha o número de voltas que deseja traçar: ", target="graph") # Órbita ligada
+                            norbitinput = input("Para essa escolha de parâmetros, a partícula orbita o buraco negro. Escolha o número de voltas que deseja traçar: ") # Órbita ligada
                             if isNumeric(norbitinput) and eval(norbitinput)>0:
                                 norbit = int(eval(norbitinput))
                             else:
-                                display("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.", target="graph")
+                                display("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.", target="infos", append=True)
                                 norbit = 5                            
                         
                     elif len(tps) == 1:
-                        display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="graph") # Órbita de captura
+                        display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                         u1 = ust * (1 + eps)
                         u2 = 0.55
                         norbit = 0.5
                     
                     else:
-                        display("ERRO 2")
+                        display("ERRO 2", target="infos", append=True)
             else: # l < sqrt(12)
-                display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="graph") # Órbita de captura
+                display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                 u1 = ust * (1 + eps)
                 u2 = 0.55
                 norbit = 0.5
@@ -170,7 +184,7 @@ def gerarOrbitaM():
             umin = min(u1, u2)
             umax = max(u1, u2)
             if 1/umin > 1000:
-                print("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.", target="graph")
+                display("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.", target="infos", append=True)
 
             n = 500
             Ttotal, erroT = quad(tau_integrand, umin, umax, args=(l, E))  # Tempo total para ir de u1 para u2.
@@ -252,21 +266,21 @@ def gerarOrbitaM():
             else:
                 plt.axis([- r_escala / umin, r_escala / umin, - r_escala / umin, r_escala / umin])
             ax = plt.gca()
-            ax.spines['bottom'].set_color('white')
-            ax.tick_params(axis='x', colors='white')
-            ax.tick_params(axis='y', colors='white')
-            ax.spines['top'].set_color('white')
-            ax.spines['right'].set_color('white')
-            ax.spines['left'].set_color('white')
-            ax.xaxis.label.set_color('white')
-            ax.yaxis.label.set_color('white')
-            fig.patch.set_facecolor('#0E1117')
+            ax.spines['bottom'].set_color(eixos)
+            ax.tick_params(axis='x', colors=eixos)
+            ax.tick_params(axis='y', colors=eixos)
+            ax.spines['top'].set_color(eixos)
+            ax.spines['right'].set_color(eixos)
+            ax.spines['left'].set_color(eixos)
+            ax.xaxis.label.set_color(eixos)
+            ax.yaxis.label.set_color(eixos)
+            fig.patch.set_facecolor(borda)
             ax.set_facecolor("black")
             #plt.show()
-            display(plt, , target="graph")
+            display(plt, target='graph', append=True)
         
         else:
-            display("ATENÇÃO: Valor inválido para a velocidade inicial, que deve ser um número menor que 1.", target="graph") 
+            display("ATENÇÃO: Valor inválido para a velocidade inicial, que deve ser um número menor que 1.", target="infos", append=True)
 
     # HTML(ani1.to_jshtml())
     # components.html(ani1.to_jshtml(),height=800)
@@ -400,4 +414,4 @@ if tipo_orbita == "L":
         
     else:
         print("ATENÇÃO: Valor inválido para o parâmetro de impacto.")
-""" 
+"""

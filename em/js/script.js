@@ -1,8 +1,7 @@
 // Função que é executada sempre que a página é aberta
 function init() {
     dark();
-    document.getElementById('ico1').classList.add('select');
-    document.getElementById('ico1b').classList.add('select');
+    mode = 'dark';
 }
 
 function dark() {
@@ -20,7 +19,6 @@ function dark() {
     r.style.setProperty('--bordax', 'e3e3e3');
     var element = document.body;
     element.classList.add("dark-mode");
-    document.getElementById("potencialluz").src="img/potencialluzDark.png";
 }
 
 function light(){
@@ -38,20 +36,17 @@ function light(){
     r.style.setProperty('--bordax', '#f6f6f6');
     var element = document.body;
     element.classList.remove("dark-mode");
-    document.getElementById("potencialluz").src="img/potencialluzLight.png";
 }
 
 function change() {
-    var element = document.body;
-    if (localStorage.getItem("mode") == "dark") {
-        localStorage.setItem("mode", "light");
+    if (mode == "dark") {
+        mode =  "light";
         light();
     } else {
-        localStorage.setItem("mode", "dark");
+        mode = "dark";
         dark();
     }
 }
-
 
 function show(shown, hide) {
     document.getElementById(shown).style.display='block';
@@ -87,3 +82,17 @@ function getValues() {
 }
 
 setInterval(getValues,100);
+
+function limpaDiv(show){
+    document.getElementById(show).style.display='block';
+}
+
+function limpaDiv2() {
+    var GrafM = document.getElementById("GrafM");
+    GrafM.style.display="block";
+    var graph = document.getElementById("graph");
+    graph.firstChild.remove();
+    var info = document.getElementById("infos");
+    info.firstChild.remove();
+}
+

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffdb57">
     <title>Órbitas Relativísticas</title>
     <link rel="icon" type="image/x-icon" href="../es/img/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
@@ -90,11 +91,11 @@
                     </div>
                 
                 </div>
-                <!--<button class="click" id="click2" onclick="return limpaDiv('parte2')" py-click="gerarOrbitaL()">Próximo</button>-->
+                <a href="#parte2"><button class="click" id="click1" onclick="return limpaDiv('parte2')">Próximo</button></a>
             </div>
         </article>
         <article>
-            <div class="programa">
+            <div class="programa" id="parte2" style="display: none;">
                 <h5><a style="color:#ffdb57;">2.</a> Escolha o valor do módulo da velocidade inicial $v_0$ (em unidade da velocidade da luz):</h5>
                 <div class="input">
                     <p>Escolha entre 0 e 1:</p>
@@ -102,15 +103,17 @@
                     <div class="value">
                         <p class="inicial">0.0</p>
                         <output id="rangevalue2">0.0</output>
-                        <p class="final">15</p>
+                        <p class="final">1</p>
                     </div>
                 </div>
-                <button class="click" id="click2" onclick="return limpaDiv('parte2')" py-click="gerarOrbitaM()">Gerar Órbita</button>
+                <a href="#GrafM"><button class="click" id="click2" onclick="return limpaDiv2()" py-click="gerarOrbitaM()">Gerar Órbita</button></a>
             </div>
         </article>
         <article>
-            <div class="programa">
+            <div class="programa" id="GrafM" style="display: none">
+                <h5>Gráfico da Órbita</h5>
                 <div class="graf1" id="graph"></div>
+                <div class="valor" id="infos" style="display: none;"></div>
             </div>
         </article>   
     </div>
