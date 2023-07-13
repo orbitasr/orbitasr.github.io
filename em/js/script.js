@@ -1,3 +1,7 @@
+orbitas = false;
+mensagem = false;
+msg = false;
+
 // Função que é executada sempre que a página é aberta
 function init() {
     dark();
@@ -80,10 +84,46 @@ function nav(a,b,c,d,e,f){
 function getValues() {
     x = document.getElementById("rangevalue").value;
     v0js = document.getElementById("rangevalue2").value;
-    d = document.getElementById("rangevalue3").value;
+    orb = document.getElementById("rangevalue3").value;
+    d = document.getElementById("rangevalue4").value;
 }
 
 setInterval(getValues,100);
+
+function mostraPasso3() {
+    orbitas = pyscript.interpreter.globals.get('orbitas');
+    ocultar = pyscript.interpreter.globals.get('ocultar');
+    if (orbitas) {
+        document.getElementById("parte3").style.display='block';
+        if (ocultar) {
+            document.getElementById("GrafM").style.display='none';
+        }
+    }
+}
+
+setInterval(mostraPasso3,100);
+
+function exibeMensagemM() {
+    mensagem = pyscript.interpreter.globals.get('mensagem');
+    if (mensagem) {
+        document.getElementById('infos').style.display='block';
+    } else {
+        document.getElementById('infos').style.display='none';
+    }
+}
+
+setInterval(exibeMensagemM,100);
+
+function exibeMensagemL() {
+    msg = pyscript.interpreter.globals.get('msg');
+    if (msg) {
+        document.getElementById('infos2').style.display='block';
+    } else {
+        document.getElementById('infos2').style.display='none';
+    }
+}
+
+setInterval(exibeMensagemL,100);
 
 function limpaDiv(show){
     document.getElementById(show).style.display='block';
@@ -98,3 +138,24 @@ function limpaDiv2() {
     info.firstChild.remove();
 }
 
+function limpaDiv3() {
+    var GrafL = document.getElementById("GrafL");
+    GrafL.style.display="block";
+    var graph = document.getElementById("graph2");
+    graph.firstChild.remove();
+    var infos2 = document.getElementById("infos2");
+    infos2.firstChild.remove();
+    infos2.firstChild.remove();
+    msg = false;
+}
+
+function reiniciar() {
+    mensagem = false;
+    orbitas = false;
+    document.getElementById("parte2").style.display="none";
+    document.getElementById("parte3").style.display="none";
+    document.getElementById("GrafM").style.display="none";
+    document.getElementById("rangevalue").value=2.01;
+    document.getElementById("rangevalue2").value=0.0;
+    document.getElementById("rangevalue3").value=1;
+}

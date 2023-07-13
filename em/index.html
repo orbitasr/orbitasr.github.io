@@ -110,10 +110,27 @@
             </div>
         </article>
         <article>
+            <div class="programa" id="parte3" style="display: none;">
+                <h5><a style="color:#ffdb57;">3.</a> Insira o número de voltas completas na órbita:</h5>
+                <div class="input">
+                    <p>Para essa escolha de parâmetros, a partícula orbita o buraco negro. Escolha o número de voltas que deseja traçar:</p>
+                    <p>Escolha entre 1 e 20</p>
+                    <input type="range" value="1" min="1" max="20" step="1" style="width: 100%;" oninput="rangevalue3.value=value"/>
+                    <div class="value">
+                        <p class="inicial">1</p>
+                        <output id="rangevalue3">1</output>
+                        <p class="final">20</p>  
+                    </div>
+                </div>
+                <a href="#GrafM"><button class="click" id="click2" onclick="limpaDiv2()" py-click="gerarOrbitaM()">Gerar Órbita</button></a>
+            </div>
+        </article>
+        <article>
             <div class="programa" id="GrafM" style="display: none">
                 <h5>Gráfico da Órbita</h5>
                 <div class="graf1" id="graph"></div>
                 <div class="valor" id="infos" style="display: none;"></div>
+                <a href="#M_Inicio"><button class="click" py-click="reiniciar()" onclick="reiniciar()">Reiniciar</button></a>
             </div>
         </article>   
     </div>
@@ -148,19 +165,21 @@
                 <h5><a style="color:#ffdb57;">1.</a> Escolha o valor do parâmetro de impacto $d$ (em km):</h5>
                 <div class="input">
                     <p>Escolha entre 0.01 e 15:</p>
-                    <input type="range" value="0.01" min="0.01" max="15.00" step="0.01" style="width: 100%;" oninput="rangevalue3.value=value"/>
+                    <input type="range" value="0.01" min="0.01" max="15.00" step="0.01" style="width: 100%;" oninput="rangevalue4.value=value"/>
                     <div class="value">
                         <p class="inicial">0.01</p>
-                        <output id="rangevalue3">0.01</output>
+                        <output id="rangevalue4">0.01</output>
                         <p class="final">15</p>
                     </div>
                 </div>
-                <button class="click" id="click2" onclick="return limpaDiv('parte2')" py-click="gerarOrbita2()">Gerar Órbita</button>
+                <a href="#GrafL"><button class="click" id="click2" onclick="return limpaDiv3()" py-click="gerarOrbitaL()">Gerar Órbita</button></a>
             </div>
         </article>
         <article>
-            <div class="programa">
+            <div class="programa" id="GrafL" style="display: none;">
+                <h5>Gráfico da Órbita</h5>
                 <div class="graf1" id="graph2"></div>
+                <div class="valor" id="infos2" style="display: none;"></div>
             </div>
         </article>
     </div>
@@ -174,17 +193,17 @@
         </div>
         <div class="conteudo" id="conteudo3">
             <h4>Sobre</h4>
-            <p>Este site foi elaborado a partir de um código em Python desenvolvido no trabalho de conclusão de curso (TCC) de <b>Isabella Ramos de Souza Nunes</b>, bacharel em Física pela Universidade Federal Fluminense, e sob a orientação da <b><a href="https://sites.google.com/view/raissamendes/homepage">Prof.ª Dr.ª Raissa Fernandes Pessoa Mendes</a></b>.</p>
-            <p>A construção do ambiente virtual a partir do código em Python foi realizada por <b><a href="http://lutterbach.me/">Alessandro Lutterbach Veiga Gonçalves</a></b>, licenciado em Física pela Universidade Federal Fluminense.</p>
+            <p>Este site foi elaborado a partir de um código em Python desenvolvido no trabalho de conclusão de curso (TCC) de <b>Isabella Ramos de Souza Nunes</b>, bacharel em Física pela Universidade Federal Fluminense, e sob a orientação da <b><a href="https://sites.google.com/view/raissamendes/homepage" target="_blank">Prof.ª Dr.ª Raissa Fernandes Pessoa Mendes</a></b>.</p>
+            <p>A construção do ambiente virtual a partir do código em Python foi realizada por <b><a href="http://lutterbach.me/" target="_blank">Alessandro Lutterbach Veiga Gonçalves</a></b>, licenciado em Física pela Universidade Federal Fluminense.</p>
             <p style="font-size: larger;"><b>Links Úteis:</b></p>
             <ul>
-                <li><p><a href="https://app.uff.br/riuff/handle/1/22383">Trabalho de conclusão de curso de Isabella Ramos de Souza Nunes.</a></p></li>
+                <li><p><a target="_blank" href="https://app.uff.br/riuff/handle/1/22383">Trabalho de conclusão de curso de Isabella Ramos de Souza Nunes.</a></p></li>
             </ul>
         </div> 
     </div>
 
     <footer>
-        <a class="foot" onclick="openModal('sobre','window3')">
+        <a class="foot" id="foot" onclick="openModal('sobre','window3')">
             <img class="about" src="img/info.svg">
             <p class="foot">Sobre este site</p>
         </a>
