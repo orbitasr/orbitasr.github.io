@@ -79,6 +79,7 @@ def gerarPotencial():
         plt.plot(r_escala * r, v(u, l), color="white")
         plt.plot([r_escala / umin, r_escala / umax], [vmin, vmax], 'bo', color="gold")
         plt.xlabel("r [km]")
+        plt.ylabel(r"$\bar{U}_\textrm{efetiva}^{(RG)}$")
         plt.axis([0, r_escala * rmax, -0.5, vlim + 0.1])
         ax = plt.gca()
         ax.spines['bottom'].set_color(eixos)
