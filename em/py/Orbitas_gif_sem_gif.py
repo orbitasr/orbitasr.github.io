@@ -147,7 +147,7 @@ def gerarOrbitaM():
                 ist = closest(tps, ust)[0]
                 if E >= 0:
                     if ist == 0:
-                        display("Para essa escolha de parâmetros, a partícula escapa do buraco negro.", target="infos", append=True) # Órbita de espalhamento
+                        display("Para essa escolha de parâmetros, a partícula não cai no buraco negro.", target="infos", append=True) # Órbita de espalhamento
                         mensagem = True   
                         u1 = ust * (1 - eps)
                         u2 = ust / 10
@@ -369,7 +369,7 @@ def gerarOrbitaL():
         tps = sorted(positiverealroots)
         
         if k < wmax:
-            display("Para essa escolha de parâmetros, o raio de luz escapa do buraco negro.", target="infos2", append=True)
+            display("Para essa escolha de parâmetros, o raio de luz não cai no buraco negro.", target="infos2", append=True)
             msg = True
             if ust < tps[0] / 2:
                 u1 = ust
