@@ -180,8 +180,13 @@ function reiniciar() {
     document.getElementById("parte2").style.display="none";
     document.getElementById("parte3").style.display="none";
     document.getElementById("GrafM").style.display="none";
+    document.getElementById("range1").value=0.0;
     document.getElementById("rangevalue").value=0.0;
     document.getElementById("number").value=0.0;
+    document.getElementById("range2").value=1;
     document.getElementById("rangevalue2").value=1;
-
 }
+
+
+
+
