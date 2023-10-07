@@ -37,12 +37,11 @@ def gerarPotencial():
         return v
 
     # Muda o escopo das variáveis abaixo para global:
-    global l, vmin, vmax, eps, circular, r_escala, rg
+    global l, vmin, vmax, eps, r_escala, rg
     # Definições básicas
     rg = 2.953 # Raio de Schwarzachild para o Sol (2*G*M_sun/c^2), em km. Pode ser alterado caso se queira mudar a massa do buraco negro.
     r_escala = rg/2 # Fator de recuperação de unidades.
     eps = 1e-8
-    circular = False
     
     eixos, borda = mudarCor()
     
@@ -126,6 +125,10 @@ def gerarPotencial():
         
        
 def gerarOrbitaM(): 
+
+        global circular
+        circular = False
+
         def theta(w, l, E):
             theta = (l / (2 ** (1 / 2))) / ((E - v(w, l)) ** (1 / 2))
             return theta
@@ -166,7 +169,6 @@ def gerarOrbitaM():
             if E == vmin or (0 < E - vmin < eps):
                 E = vmin
                 rcirc = l**2 / 2 * (1 - math.sqrt(1 - 12/l**2))
-                global circular
                 circular = True
             if E == vmax:
                 E = E + 10*eps #Força uma órbita de captura.
@@ -242,10 +244,13 @@ def gerarOrbitaM():
                     #print("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.")
                     display("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.", target="infos", append=True)
                     mensagem = True
-                uc1 = np.linspace(u1, 1.1*u1, 300)
-                uc2 = np.linspace(1.11*u1, 0.9*u2, 1000)
-                uc3 = np.linspace(0.91*u2, u2, 300)
-                uc = np.concatenate((uc1,uc2,uc3))
+                if 1.1*u1 < 0.9*u2:
+                    uc1 = np.linspace(u1, 1.1*u1, 300)
+                    uc2 = np.linspace(1.11*u1, 0.9*u2, 1000)
+                    uc3 = np.linspace(0.91*u2, u2, 300)
+                    uc = np.concatenate((uc1,uc2,uc3))
+                else:
+                    uc = np.linspace(u1,u2,500)
                 ud = uc[::-1]
                 n = len(uc)
     
