@@ -106,7 +106,7 @@ def gerarOrbitaM():
             E = v(ust, l) + eps  # Hipótese: dr/dt = 0 inicialmente.
             
             if test_mode == True:
-                t = "Energia: " + E + ". Momento angular: " + l + "."
+                t = "Energia: " + str(E) + ". Momento angular: " + str(l) + "."
                 display(t, target="infos", append=True)
                 mensagem = True   
                 r = np.arange(2, 10, 1 / 10000)
@@ -156,7 +156,7 @@ def gerarOrbitaM():
                         display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                         mensagem = True   
                         u1 = ust * (1 + eps)
-                        u2 = 0.55
+                        u2 = 0.5
                         norbit = 0.5
                     else:
                         display("ERRO 1", target="infos", append=True)
@@ -173,7 +173,7 @@ def gerarOrbitaM():
                             display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                             mensagem = True   
                             u1 = ust * (1 + eps)
-                            u2 = 0.55
+                            u2 = 0.5
                             norbit = 0.5
                         
                         #INPUT: Número de voltas para órbita ligada
@@ -205,7 +205,7 @@ def gerarOrbitaM():
                         display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                         mensagem = True   
                         u1 = ust * (1 + eps)
-                        u2 = 0.55
+                        u2 = 0.5
                         norbit = 0.5
                     
                     else:
@@ -214,7 +214,7 @@ def gerarOrbitaM():
                 display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
                 mensagem = True   
                 u1 = ust * (1 + eps)
-                u2 = 0.55
+                u2 = 0.5
                 norbit = 0.5
             
             umin = min(u1, u2)
@@ -229,9 +229,16 @@ def gerarOrbitaM():
             dt = teval[1] - teval[0]
             
             f = lambda t, u: u ** 2 * (2.0 * abs(E - v(u, l))) ** (1 / 2.0)
-            sol = solve_ivp(f, [0, Ttotal], [umin], t_eval = teval)
+            sol = solve_ivp(f, [0, Ttotal], [umin], t_eval = teval, rtol = 2e-8, atol = 2e-8)
+          #  uc = []
+          #  for i in range(n):
+          #      if sol.y[0][i] < umax:
+          #          uc.append(sol.y[0][i])
+          #  uc.append([umax])
+          #  n=len(uc)
             uc = np.append(sol.y[0][:-1] , [umax])
             ud = uc[::-1]
+            
             
             delphi, erro = quad(theta, umin, umax, args=(l, E))
             
