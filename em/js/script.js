@@ -156,8 +156,8 @@ function reiniciar() {
     document.getElementById("parte2").style.display="none";
     document.getElementById("parte3").style.display="none";
     document.getElementById("GrafM").style.display="none";
-    document.getElementById("range1").value=2.96;
-    document.getElementById("rangevalue").value=2.96;
+    document.getElementById("range1").value=3;
+    document.getElementById("rangevalue").value=3;
     document.getElementById("range2").value=0.0;
     document.getElementById("rangevalue2").value=0.0;
     document.getElementById("range3").value=1;

@@ -61,10 +61,6 @@ def gerarOrbitaM():
     
     # Definindo funções importantes
 
-    rg = 2.953 # Raio de Schwarzachild para o Sol (2*G*M_sun/c^2), em km. Pode ser alterado caso se queira mudar a massa do buraco negro.
-    r_escala = rg/2 # Fator de recuperação de unidades.
-    eps = 1e-8
-
     def v(u, l):
         v = -u + (l ** 2) * (u ** 2) / 2 - (l ** 2) * (u ** 3)
         return v    
