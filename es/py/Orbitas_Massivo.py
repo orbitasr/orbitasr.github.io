@@ -10,6 +10,7 @@ firstRun = True
 def reiniciar():
     global orbitas
     orbitas = False
+    js.orbitas = orbitas
     global firstRun
     firstRun = True
 
@@ -139,6 +140,7 @@ def gerarOrbitaM():
 
         global mensagem
         mensagem = False
+        js.mensagem = mensagem
         
         eixos, borda = mudarCor()
 
@@ -180,9 +182,11 @@ def gerarOrbitaM():
                 #Faz aparecer input no site:
                 global orbitas
                 orbitas = True
+                js.orbitas = orbitas
                 
                 global ocultar
                 ocultar = True
+                js.ocultar = ocultar
 
                 global firstRun
                 if firstRun:
@@ -190,6 +194,7 @@ def gerarOrbitaM():
                     return
 
                 ocultar = False
+                js.ocultar = ocultar
 
                 #norbitinput = input("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita ligada será mostrada. Escolha o número de voltas que deseja traçar: ")
                 from js import o
@@ -200,6 +205,7 @@ def gerarOrbitaM():
                     #print("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.")
                     display("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.", target="infos", append=True)
                     mensagem = True
+                    js.mensagem = mensagem
                     norbit = 5
             elif (E < 0 and E > vmax) or E < vmin: #Órbita de captura começando do ponto de retorno.
                 u1 = tps[0] * (1 + eps)
@@ -213,6 +219,7 @@ def gerarOrbitaM():
                 norbit = 1
                 display("Para essa escolha de parâmetros, dois tipos de órbitas são possíveis. A órbita de espalhamento está sendo mostrada.", target="infos", append=True)
                 mensagem = True
+                js.mensagem = mensagem
             elif E >=0 and E > vmax:
                 u1 = ust
                 u2 = 0.5
@@ -235,6 +242,7 @@ def gerarOrbitaM():
         if E <= Emin:
             display("ATENÇÃO: O parâmetro de energia deve ser maior que Emin = -0.5 para garantir que a órbita tenha início fora do horizonte de eventos.", target="infos", append=True)
             mensagem = True
+            js.mensagem = mensagem
             
         else:          
             if not circular:
@@ -244,6 +252,7 @@ def gerarOrbitaM():
                     #print("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.")
                     display("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.", target="infos", append=True)
                     mensagem = True
+                    js.mensagem = mensagem
                 if 1.1*u1 < 0.9*u2:
                     uc1 = np.linspace(u1, 1.1*u1, 300)
                     uc2 = np.linspace(1.11*u1, 0.9*u2, 1000)
