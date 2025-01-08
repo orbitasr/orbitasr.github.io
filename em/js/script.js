@@ -91,8 +91,8 @@ function getValues() {
 setInterval(getValues,100);
 
 function mostraPasso3() {
-    orbitas = pyscript.interpreter.globals.get('orbitas');
-    ocultar = pyscript.interpreter.globals.get('ocultar');
+    //orbitas = pyscript.interpreter.globals.get('orbitas');
+    //ocultar = pyscript.interpreter.globals.get('ocultar');
     if (orbitas) {
         document.getElementById("parte3").style.display='block';
         if (ocultar) {
@@ -104,7 +104,7 @@ function mostraPasso3() {
 setInterval(mostraPasso3,100);
 
 function exibeMensagemM() {
-    mensagem = pyscript.interpreter.globals.get('mensagem');
+    //mensagem = pyscript.interpreter.globals.get('mensagem');
     if (mensagem) {
         document.getElementById('infos').style.display='block';
     } else {
@@ -115,7 +115,7 @@ function exibeMensagemM() {
 setInterval(exibeMensagemM,100);
 
 function exibeMensagemL() {
-    msg = pyscript.interpreter.globals.get('msg');
+    //msg = pyscript.interpreter.globals.get('msg');
     if (msg) {
         document.getElementById('infos2').style.display='block';
     } else {

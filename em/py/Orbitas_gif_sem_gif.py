@@ -43,6 +43,7 @@ firstRun = True
 def reiniciar():
     global orbitas
     orbitas = False
+    js.orbitas = orbitas
     global firstRun
     firstRun = True
 
@@ -77,6 +78,7 @@ def gerarOrbitaM():
 
     global mensagem
     mensagem = False
+    js.mensagem = mensagem
     
     # Input: posição inicial
     from js import x
@@ -89,7 +91,8 @@ def gerarOrbitaM():
 
     if x0 <= rg:
         display("ATENÇÃO: Escolha um valor da posição inicial maior que 3 km, caso contrário, a trajetória já começa dentro do buraco negro.", target="infos", append=True)
-        mensagem = True   
+        mensagem = True
+        js.mensagem = mensagem  
     else:
         # Input: módulo da velocidade inicial
         from js import v0js
@@ -108,7 +111,8 @@ def gerarOrbitaM():
             if test_mode == True:
                 t = "Energia: " + str(E) + ". Momento angular: " + str(l) + "."
                 display(t, target="infos", append=True)
-                mensagem = True   
+                mensagem = True
+                js.mensagem = mensagem   
                 r = np.arange(2, 10, 1 / 10000)
                 u = 1 / r
                 fig1 = plt.figure()
@@ -148,19 +152,22 @@ def gerarOrbitaM():
                 if E >= 0:
                     if ist == 0:
                         display("Para essa escolha de parâmetros, a partícula não cai no buraco negro.", target="infos", append=True) # Órbita de espalhamento
-                        mensagem = True   
+                        mensagem = True
+                        js.mensagem = mensagem   
                         u1 = ust * (1 - eps)
                         u2 = ust / 10
                         norbit = 0.5
                     elif ist == 1:
                         display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
-                        mensagem = True   
+                        mensagem = True
+                        js.mensagem = mensagem   
                         u1 = ust * (1 + eps)
                         u2 = 0.5
                         norbit = 0.5
                     else:
                         display("ERRO 1", target="infos", append=True)
-                        mensagem = True   
+                        mensagem = True
+                        js.mensagem = mensagem   
                 else: # E < 0
                     if len(tps) == 3:
                         if ist == 0:
@@ -171,7 +178,8 @@ def gerarOrbitaM():
                             u2 = tps[0] * (1 + eps)
                         elif ist == 2:
                             display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
-                            mensagem = True   
+                            mensagem = True
+                            js.mensagem = mensagem   
                             u1 = ust * (1 + eps)
                             u2 = 0.5
                             norbit = 0.5
@@ -180,9 +188,11 @@ def gerarOrbitaM():
                         if ist == 0 or ist == 1:
                             global orbitas
                             orbitas = True
+                            js.orbitas = orbitas
 
                             global ocultar
                             ocultar = True
+                            js.ocultar = ocultar
 
                             global firstRun
 
@@ -191,6 +201,7 @@ def gerarOrbitaM():
                                 return
 
                             ocultar = False
+                            js.ocultar = ocultar
                             from js import orb
                             norbitinput = orb
                             #norbitinput = input("Para essa escolha de parâmetros, a partícula orbita o buraco negro. Escolha o número de voltas que deseja traçar: ") # Órbita ligada
@@ -198,12 +209,14 @@ def gerarOrbitaM():
                                 norbit = int(eval(norbitinput))
                             else:
                                 display("ATENÇÃO: Valor inválido para o número de voltas. Mostrando 5 voltas.", target="infos", append=True)
-                                mensagem = True   
+                                mensagem = True
+                                js.mensagem = mensagem   
                                 norbit = 5                            
                         
                     elif len(tps) == 1:
                         display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
-                        mensagem = True   
+                        mensagem = True
+                        js.mensagem = mensagem   
                         u1 = ust * (1 + eps)
                         u2 = 0.5
                         norbit = 0.5
@@ -212,7 +225,8 @@ def gerarOrbitaM():
                         display("ERRO 2", target="infos", append=True)
             else: # l < sqrt(12)
                 display("Para essa escolha de parâmetros, a partícula cai no buraco negro.", target="infos", append=True) # Órbita de captura
-                mensagem = True   
+                mensagem = True
+                js.mensagem = mensagem   
                 u1 = ust * (1 + eps)
                 u2 = 0.5
                 norbit = 0.5
@@ -221,7 +235,8 @@ def gerarOrbitaM():
             umax = max(u1, u2)
             if 1/umin > 1000:
                 display("ATENÇÃO: Órbitas muito excêntricas podem não ser representadas adequadamente.", target="infos", append=True)
-                mensagem = True  
+                mensagem = True
+                js.mensagem = mensagem  
 
             n = 500
             Ttotal, erroT = quad(tau_integrand, umin, umax, args=(l, E))  # Tempo total para ir de u1 para u2.
@@ -325,7 +340,8 @@ def gerarOrbitaM():
         
         else:
             display("ATENÇÃO: Valor inválido para a velocidade inicial, que deve ser um número menor que 1.", target="infos", append=True)
-            mensagem = True   
+            mensagem = True
+            js.mensagem = mensagem   
 
     # HTML(ani1.to_jshtml())
     # components.html(ani1.to_jshtml(),height=800)
@@ -353,6 +369,7 @@ def gerarOrbitaL():
 
     global msg
     msg = False
+    js.msg = msg
 
     # Input: parâmetro de impacto
     from js import d
@@ -378,6 +395,7 @@ def gerarOrbitaL():
         if k < wmax:
             display("Para essa escolha de parâmetros, o raio de luz não cai no buraco negro.", target="infos2", append=True)
             msg = True
+            js.msg = msg
             if ust < tps[0] / 2:
                 u1 = ust
             else: 
@@ -387,6 +405,7 @@ def gerarOrbitaL():
         else:
             display("Para essa escolha de parâmetros, o raio de luz é capturado pelo buraco negro.", target="infos2", append=True)
             msg = True
+            js.msg = msg
             u1 = ust
             u2 = 0.5 
             norbit = 0.5    
@@ -470,3 +489,4 @@ def gerarOrbitaL():
     else:
         display("ATENÇÃO: Valor inválido para o parâmetro de impacto.", target="infos2", append=True)
         msg = True
+        js.msg = msg
